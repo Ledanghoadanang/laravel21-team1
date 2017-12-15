@@ -60,6 +60,9 @@
 
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
+            <h2 class="title text-center">
+            @yield('features')
+            </h2>
 						@include('layouts.user.feature-item')
 					</div><!--features_items-->
 
@@ -69,6 +72,9 @@
 
 					<div class="recommended_items"><!--recommended_items-->
 						@include('layouts.user.recommend-item')
+            <h2 class="title text-center">
+            @yield('recomend')
+            </h2>
 					</div><!--/recommended_items-->
 
 				</div>

@@ -34,6 +34,13 @@
       <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
     </ul>
   </li>
+
+  <li class="active treeview">
+    <a href="#">
+      <span>Styles</span>
+    </a>
+  </li>
+
   <li class="treeview">
     <a href="#">
       <i class="fa fa-files-o"></i>

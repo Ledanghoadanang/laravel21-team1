@@ -26,11 +26,11 @@
 
 <body>
 	<header id="header"><!--header-->
-		@include('layouts.user.header')
+		@include('layouts.shop.header')
 	</header><!--/header-->
 
 	<section id="slider"><!--slider-->
-		@include('layouts.user.slide')
+		@include('layouts.shop.slide')
 	</section><!--/slider-->
 
 	<section>
@@ -40,15 +40,15 @@
 					<div class="left-sidebar">
             <h2>Category</h2>
             <div class="panel-group category-products" id="accordian"><!--category-productsr-->
-              @include('layouts.user.category-product')
+              @include('layouts.shop.category-product')
 						</div><!--/category-products-->
 
 						<div class="brands_products"><!--brands_products-->
-							@include('layouts.user.branch-sidebar')
+							@include('layouts.shop.branch-sidebar')
 						</div><!--/brands_products-->
 
 						<div class="price-range"><!--price-range-->
-							@include('layouts.user.price-range')
+							@include('layouts.shop.price-range')
 						</div><!--/price-range-->
 
 						<div class="shipping text-center"><!--shipping-->
@@ -63,15 +63,15 @@
             <h2 class="title text-center">
             @yield('features')
             </h2>
-						@include('layouts.user.feature-item')
+						@include('layouts.shop.feature-item')
 					</div><!--features_items-->
 
 					<div class="category-tab"><!--category-tab-->
-						@include('layouts.user.category-tab')
+						@include('layouts.shop.category-tab')
 					</div><!--/category-tab-->
 
 					<div class="recommended_items"><!--recommended_items-->
-						@include('layouts.user.recommend-item')
+						@include('layouts.shop.recommend-item')
             <h2 class="title text-center">
             @yield('recomend')
             </h2>
@@ -83,7 +83,7 @@
 	</section>
 
 	<footer id="footer"><!--Footer-->
-    @include('layouts.user.footer')
+    @include('layouts.shop.footer')
 	</footer><!--/Footer-->
 
 

@@ -1,4 +1,4 @@
-@extends('layouts.user.master')
+@extends('layouts.shop.master')
 @section('features')
  >>>>>Hello, You Can Add More Features Here<<<<<
 @stop

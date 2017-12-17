@@ -12,13 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('shop.index');
+    return view('products.index');
 });
-
-Route::get('/admin', function () {
-    return view('admin.index');
-});
-
-
 
 Route::get('/products', 'ProductController@searchProducts');
+Route::get('products/branchs/{name}', 'ProductController@getProductsByBranch');

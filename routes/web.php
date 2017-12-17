@@ -19,6 +19,4 @@ Route::get('/admin', function () {
     return view('admin.index');
 });
 
-
-
 Route::get('/products', 'ProductController@searchProducts');

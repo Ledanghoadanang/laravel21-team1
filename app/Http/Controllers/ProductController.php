@@ -14,4 +14,18 @@ class ProductController extends Controller
       return view('products.search')
       ->with('products', $products);
     }
+    public function getProductsByBranch($name){
+     $products = Product::with('products')
+       ->whereName($name)
+       ->first();
+     return view('products.index')
+       ->with('brach', $branch)
+       ->with('products', $branch->products);
+    }
+    public function searchProductDetails(Product $product)
+    {
+      //$products = Product::all();
+      return view('products.showDetail')->with('product', $product);
+    }
+
 }

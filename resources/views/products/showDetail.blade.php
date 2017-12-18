@@ -1,5 +1,5 @@
 @extends('layouts.shop.master')
-@section('content')
+@section('features')
   <p>Search Details:  {{ $product->name }}</p>
   <p>
     @if ($product->branchs)

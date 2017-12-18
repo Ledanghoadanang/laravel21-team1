@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Branch;
+use Illuminate\Support\Facades\Input;
 class ProductController extends Controller
 {
     //Create Search Products From products table
@@ -19,13 +20,12 @@ class ProductController extends Controller
        ->whereName($name)
        ->first();
      return view('products.index')
-       ->with('brach', $branch)
+       ->with('branch', $branch)
        ->with('products', $branch->products);
     }
     public function searchProductDetails(Product $product)
     {
-      //$products = Product::all();
-      return view('products.showDetail')->with('product', $product);
+     return view('products.showDetail', compact('product'));
     }
 
 }

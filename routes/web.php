@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Input;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,10 +11,45 @@
 |
 */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::get('/', function () {
     return view('products.index');
 });
-
 Route::get('/products', 'ProductController@searchProducts');
 Route::get('products/branchs/{name}', 'ProductController@getProductsByBranch');
-Route::get('products/{staff}', 'ProductController@searchProductDetails');
+Route::get('products/{branch}', 'ProductController@searchProductDetails');

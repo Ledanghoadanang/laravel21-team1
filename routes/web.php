@@ -47,6 +47,16 @@ Route::get('admin/styles/{style}/delete', function(Style $style){
   $style->delete();
   return redirect('admin/styles')->withSuccess('Styles has delete');
 });
-Route::get('/products', 'ProductController@searchProducts');
+
+Route::get('/', 'ProductController@home') ;
+
+Route::get('/products', 'ProductController@index');
+Route::get('/branchs', 'ProductController@branchs');
 Route::get('products/branchs/{name}', 'ProductController@getProductsByBranch');
-Route::get('products/{branch}', 'ProductController@searchProductDetails');
+Route::get('products/create', 'ProductController@create');
+Route::get('/products/{product}', 'ProductController@show');
+Route::post('products', 'ProductController@saveStaff');
+Route::get('products/{product}/edit', 'ProductController@edit');
+Route::put('products/{product}', 'ProductController@put');
+Route::get('products/{product}/delete', 'ProductController@delete');
+Route::get('pic/{id}', 'ProductController@showPicture');

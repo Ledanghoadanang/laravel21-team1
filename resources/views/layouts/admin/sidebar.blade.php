@@ -20,8 +20,10 @@
 </form>
 <!-- /.search form -->
 <!-- sidebar menu: : style can be found in sidebar.less -->
+
 <ul class="sidebar-menu" data-widget="tree">
   <li class="header">MAIN NAVIGATION</li>
+  <li><a href="{{ url ('/admin/styles') }}"><i class="fa fa-book"></i> <span>Styles</span></a></li>
   <li class="active treeview">
     <a href="#">
       <i class="fa fa-dashboard"></i> <span>Dashboard</span>

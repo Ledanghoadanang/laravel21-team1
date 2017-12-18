@@ -1,4 +1,12 @@
 <?php
+
+
+
+
+
+
+
+
 use App\Style;
 use Illuminate\Support\Facades\Input;
 /*
@@ -12,6 +20,42 @@ use Illuminate\Support\Facades\Input;
 |
 */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::get('/', function () {
     return view('products.index');
 });
@@ -19,10 +63,22 @@ Route::get('/', function () {
 
 
 
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::get('/admin', function () {
     return view('admin.index');
 });
@@ -56,15 +112,6 @@ Route::get('admin/styles/{style}/delete', function(Style $style){
   $style->delete();
   return redirect('admin/styles')->withSuccess('Styles has delete');
 });
-
-
-
-
-
-
-
-
-
-
 Route::get('/products', 'ProductController@searchProducts');
 Route::get('products/branchs/{name}', 'ProductController@getProductsByBranch');
+Route::get('products/{branch}', 'ProductController@searchProductDetails');

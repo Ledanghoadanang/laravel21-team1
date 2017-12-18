@@ -2,6 +2,17 @@
 @section('features-items')
   <h2 class="title text-center">DANH MỤC SẢN PHẨM</h2>
   @foreach($products as $product)
+  
+  
+  
+  
+  
+  
+
+    <div class="product">
+      <a href="{{ url('products/'.$product->id) }}">
+        <strong>{{ $product->name }} -{{ $product->branch->name }} </strong>
+      </a>
   <div class="col-sm-4">
     <div class="product-image-wrapper">
       <div class="single-products">

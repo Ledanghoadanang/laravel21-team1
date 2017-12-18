@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\Input;
 |
 */
 
-
-
 Route::get('/', function () {
     return view('products.index');
 });
@@ -51,64 +49,18 @@ Route::get('admin/styles/{style}/delete', function(Style $style){
   $style->delete();
   return redirect('admin/styles')->withSuccess('Styles has delete');
 });
+Route::get('/', 'ProductController@home') ;
+Route::get('/products', 'ProductController@index');
+Route::get('/branchs', 'ProductController@branchs');
+Route::get('products/branchs/{name}', 'ProductController@getProductsByBranch');
+Route::get('products/create', 'ProductController@create');
+Route::get('/products/{product}', 'ProductController@show');
+Route::post('products', 'ProductController@saveStaff');
+Route::get('products/{product}/edit', 'ProductController@edit');
+Route::put('products/{product}', 'ProductController@put');
+Route::get('products/{product}/delete', 'ProductController@delete');
+Route::get('pic/{id}', 'ProductController@showPicture');
 Route::get('/products', 'ProductController@searchProducts');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Route::post('admin/products', function(){
   $inputs= Input::all();
   $product = Product::create($inputs);

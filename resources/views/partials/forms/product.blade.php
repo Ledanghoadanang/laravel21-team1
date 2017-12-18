@@ -13,7 +13,7 @@
 <div class="form-group">
   {!! Form::label('quantity', 'Quantity') !!}
   <div class="form-controls">
-    {!! Form::number('quantity', null, ['class' => 'form-control']) !!}
+    {!! Form::text('quantity', null, ['class' => 'form-control']) !!}
   </div>
   @if ( $errors->has('quantity') )
     <span class="text-danger">
@@ -25,7 +25,7 @@
 <div class="form-group">
   {!! Form::label('price', 'Price') !!}
   <div class="form-controls">
-    {!! Form::number('price', null, ['class' => 'form-control']) !!}
+    {!! Form::text('price', null, ['class' => 'form-control']) !!}
   </div>
   @if ( $errors->has('price') )
     <span class="text-danger">

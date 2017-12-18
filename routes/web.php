@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Input;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', function () {
+    return view('products.index');
+});
+Route::get('/admin', function () {
+    return view('admin.index');
+});
 Route::get('/admin/styles', function(){
     $styles = Style::all();
     return view('admin.styles.index', compact('styles'));
@@ -29,13 +36,13 @@ Route::get('admin/styles/{style}/edit', function(Style $style){
     return view('admin.styles.edit', compact('style', 'styles'));
 
 });
+
 Route::put('admin/styles/{style}', function(Style $style){
   $inputs = Input::all();
   $style->update($inputs);
   // return redirect('/admin/styles/' . $style->id)->withSuccess('Styles has been update');
   return redirect('/admin/styles');
 });
-
 Route::get('admin/styles/{style}/delete', function(Style $style){
   $style->delete();
   return redirect('admin/styles')->withSuccess('Styles has delete');

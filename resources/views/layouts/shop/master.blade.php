@@ -61,9 +61,8 @@
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
             <h2 class="title text-center">
-            @yield('features')
+            @yield('features-items')
             </h2>
-						@include('layouts.shop.feature-item')
 					</div><!--features_items-->
 
 					<div class="category-tab"><!--category-tab-->

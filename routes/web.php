@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Input;
 |
 */
 
+
+
 Route::get('/', function () {
     return view('products.index');
 });
@@ -157,6 +159,9 @@ Route::put('admin/branchs/{branch}', function(Branch $branch){
   $branch->update($inputs);
   return redirect('/admin/branchs');
 });
+
+
+
 Route::get('admin/branchs/{branch}/delete', function(Branch $branch){
   $branch->delete();
   return redirect('admin/branchs')->withSuccess('Branchs has delete');

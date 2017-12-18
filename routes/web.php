@@ -13,9 +13,16 @@ use Illuminate\Support\Facades\Input;
 */
 
 Route::get('/', function () {
-    return view('shop.index');
+    return view('products.index');
 });
 
+
+
+
+  
+  
+  
+  
 Route::get('/admin', function () {
     return view('admin.index');
 });
@@ -49,4 +56,15 @@ Route::get('admin/styles/{style}/delete', function(Style $style){
   $style->delete();
   return redirect('admin/styles')->withSuccess('Styles has delete');
 });
+
+
+
+
+
+
+
+
+
+
 Route::get('/products', 'ProductController@searchProducts');
+Route::get('products/branchs/{name}', 'ProductController@getProductsByBranch');

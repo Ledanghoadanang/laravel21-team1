@@ -66,6 +66,78 @@ Route::post('products', 'ProductController@saveStaff');
 Route::get('products/{product}/edit', 'ProductController@edit');
 Route::put('products/{product}', 'ProductController@put');
 Route::get('products/{product}/delete', 'ProductController@delete');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::get('pic/{id}', 'ProductController@showPicture');
 Route::get('/products', 'ProductController@searchProducts');
 // Route::post('admin/products', function(){
@@ -127,5 +199,16 @@ Route::get('/products', 'ProductController@searchProducts');
 // });
 
 
+
+
+
+
+
+
+
+
 Route::get('products/branchs/{name}', 'ProductController@getProductsByBranch');
 Route::get('products/{branch}', 'ProductController@searchProductDetails');
+
+
+

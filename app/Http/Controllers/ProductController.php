@@ -22,6 +22,38 @@ class ProductController extends Controller
   //   return view('products.index',compact('products'));
   // }
 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  public function branchs()
+  {
+   $products = Branch::all();
+   return view('products.index',compact('products'));
+
+  }
+
   public function image($id)
   {
    $product = Product::find($id);
@@ -36,6 +68,7 @@ class ProductController extends Controller
   //  return view('products.index',compact('products'));
   //
   // }
+
   public function getProductsByBranch($name){
    $branch = Branch::with('products')
      ->whereName($name)
@@ -54,17 +87,6 @@ class ProductController extends Controller
    return view('products.show', compact('product'));
   }
 
-  public function showPicture($id)
-    {
-        $picture = Product::findOrFail($id);
-        $pic = Product::make($picture->image);
-        $response = Response::make($pic->encode('jpeg'));
-
-        //setting content-type
-        $response->header('Content-Type', 'image/jpeg');
-
-        return $response;
-    }
 
     public function indexProduct(){
       $products = Product::all();

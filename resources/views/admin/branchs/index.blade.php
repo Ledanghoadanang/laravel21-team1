@@ -1,8 +1,8 @@
 @extends('layouts.admin.master')
 @section('content')
-<h2>List all products</h2>
+<h2>List all branchs</h2>
 <h2>
-  <a href="{{ url ('/admin/branchs/create') }}"> Add a products </a>
+  <a href="{{ url ('/admin/branchs/create') }}"> Add a branchs </a>
 </h2>
 <table>
   <tr>

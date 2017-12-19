@@ -49,7 +49,6 @@ Route::get('admin/styles/{style}/delete', function(Style $style){
 });
 
 Route::get('/', 'ProductController@home') ;
-
 Route::get('/products', 'ProductController@index');
 Route::get('/branchs', 'ProductController@branchs');
 Route::get('products/branchs/{name}', 'ProductController@getProductsByBranch');
@@ -59,4 +58,3 @@ Route::post('products', 'ProductController@saveStaff');
 Route::get('products/{product}/edit', 'ProductController@edit');
 Route::put('products/{product}', 'ProductController@put');
 Route::get('products/{product}/delete', 'ProductController@delete');
-Route::get('pic/{id}', 'ProductController@showPicture');

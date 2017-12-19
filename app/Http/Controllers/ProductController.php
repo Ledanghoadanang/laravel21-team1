@@ -22,14 +22,6 @@ class ProductController extends Controller
     return view('products.index',compact('products'));
   }
 
-  public function image($id)
-  {
-   $product = Product::find($id);
-   $response = Response::make($product->image, 200);
-   $response->header('Content-Type', 'image/jpeg');
-   return $response;
-  }
-
   public function branchs()
   {
    $products = Branch::all();
@@ -54,17 +46,6 @@ class ProductController extends Controller
    return view('products.show', compact('product'));
   }
 
-  public function showPicture($id)
-    {
-        $picture = Product::findOrFail($id);
-        $pic = Product::make($picture->image);
-        $response = Response::make($pic->encode('jpeg'));
-
-        //setting content-type
-        $response->header('Content-Type', 'image/jpeg');
-
-        return $response;
-    }
 
   public function saveStaff(){
    $product = Product::create(Input::all());

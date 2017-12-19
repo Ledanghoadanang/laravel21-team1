@@ -12,15 +12,15 @@ use App\Branch;
 class ProductController extends Controller
 {
 
-  public function home()
-  {
-   return redirect('/products');
-  }
-  public function index()
-  {
-    $products = Product::all();
-    return view('products.index',compact('products'));
-  }
+  // public function home()
+  // {
+  //  return redirect('/products');
+  // }
+  // public function index()
+  // {
+  //   $products = Product::all();
+  //   return view('products.index',compact('products'));
+  // }
 
   public function image($id)
   {
@@ -30,12 +30,12 @@ class ProductController extends Controller
    return $response;
   }
 
-  public function branchs()
-  {
-   $products = Branch::all();
-   return view('products.index',compact('products'));
-
-  }
+  // public function branchs()
+  // {
+  //  $products = Branch::all();
+  //  return view('products.index',compact('products'));
+  //
+  // }
   public function getProductsByBranch($name){
    $branch = Branch::with('products')
      ->whereName($name)
@@ -45,10 +45,10 @@ class ProductController extends Controller
      ->with('products', $branch->products);
   }
 
-  public function create(){
-   $branchs = Branch::all()->pluck('name', 'id');
-   return view('products.create')->with('branchs', $branchs);
-  }
+  // public function create(){
+  //  $branchs = Branch::all()->pluck('name', 'id');
+  //  return view('products.create')->with('branchs', $branchs);
+  // }
 
   public function show(Product $product){
    return view('products.show', compact('product'));
@@ -65,7 +65,7 @@ class ProductController extends Controller
 
         return $response;
     }
-<<<<<<< HEAD
+
     public function indexProduct(){
       $products = Product::all();
       return view('admin.products.index', compact('products'));
@@ -92,26 +92,26 @@ class ProductController extends Controller
       $product->delete();
       return redirect('admin/products');
     }
-=======
 
-  public function saveStaff(){
-   $product = Product::create(Input::all());
-   return redirect('products/' . $product->id)
-     ->withSuccess('Product has been created.');
-  }
-  public function edit(Product $product){
-   $branchs = Branch::all()->pluck('name', 'id');
-   return view('products.edit', compact('product', 'branchs'));
-  }
 
-  public function put(Product $product){
-  $product -> update(Input::all());
-  return redirect('products/' . $product->id)
-    ->withSuccess('Product has been updated.');
-  }
-  public function delete(Product $product){
-  $product->delete();
-  return redirect('products')->withSuccess('Product has been deleted');
-  }
->>>>>>> ec67e92f821f08ab44b8b70afad2b182838ba107
+  // public function saveStaff(){
+  //  $product = Product::create(Input::all());
+  //  return redirect('products/' . $product->id)
+  //    ->withSuccess('Product has been created.');
+  // }
+  // public function edit(Product $product){
+  //  $branchs = Branch::all()->pluck('name', 'id');
+  //  return view('products.edit', compact('product', 'branchs'));
+  // }
+  //
+  // public function put(Product $product){
+  // $product -> update(Input::all());
+  // return redirect('products/' . $product->id)
+  //   ->withSuccess('Product has been updated.');
+  // }
+  // public function delete(Product $product){
+  // $product->delete();
+  // return redirect('products')->withSuccess('Product has been deleted');
+  // }
+
 }

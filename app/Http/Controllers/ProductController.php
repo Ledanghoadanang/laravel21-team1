@@ -16,35 +16,35 @@ class ProductController extends Controller
   {
    return redirect('/products');
   }
-  public function index()
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  public function index()
   {
     $products = Product::all();
     return view('products.index',compact('products'));
@@ -104,7 +104,7 @@ class ProductController extends Controller
    return redirect('products/' . $product->id)
        ->withSuccess('Product has been created.');
   }
-  
+
   public function edit(Product $product){
    $branchs = Branch::all()->pluck('name', 'id');
    return view('products.edit', compact('product', 'branchs'));

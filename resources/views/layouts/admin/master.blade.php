@@ -62,7 +62,13 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <section class="content-header">
+
+
+
+
       @yield('content')
+
+
   
   </div>
   <!-- /.content-wrapper -->

@@ -15,6 +15,23 @@ use Illuminate\Support\Facades\Input;
 */
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::get('/admin', function () {
     return view('admin.index');
 });
@@ -24,6 +41,7 @@ Route::get('admin/styles/create', 'StyleController@createStyle');
 Route::get('admin/styles/{style}/edit', 'StyleController@editStyle');
 Route::put('admin/styles/{style}', 'StyleController@putStyle');
 Route::get('admin/styles/{style}/delete','StyleController@deleteStyle');
+
 Route::get('/products', 'ProductController@searchProducts');
 Route::get('/admin/products', 'ProductController@indexProduct');
 Route::post('admin/products', 'ProductController@postProduct');
@@ -37,6 +55,19 @@ Route::get('admin/branchs/create', 'BranchController@createBranch');
 Route::get('admin/branchs/{branch}/edit', 'BranchController@editBranch');
 Route::put('admin/branchs/{branch}', 'BranchController@putBranch');
 Route::get('admin/branchs/{branch}/delete', 'BranchController@deleteBranch');
+
+Route::put('admin/styles/{style}', function(Style $style){
+  $inputs = Input::all();
+  $style->update($inputs);
+  // return redirect('/admin/styles/' . $style->id)->withSuccess('Styles has been update');
+  return redirect('/admin/styles');
+});
+Route::get('admin/styles/{style}/delete', function(Style $style){
+  $style->delete();
+  return redirect('admin/styles')->withSuccess('Styles has delete');
+});
+Route::get('/', 'ProductController@home') ;
+>>>>>>> e3ba45c22c4e9764874266689c72fa25ef36e031
 Route::get('/products', 'ProductController@index');
 Route::get('/branchs', 'ProductController@branchs');
 Route::get('products/branchs/{name}', 'ProductController@getProductsByBranch');
@@ -47,5 +78,8 @@ Route::get('products/{product}/edit', 'ProductController@edit');
 Route::put('products/{product}', 'ProductController@put');
 Route::get('products/{product}/delete', 'ProductController@delete');
 Route::get('pic/{id}', 'ProductController@showPicture');
+<<<<<<< HEAD
 Route::get('/products', 'ProductController@searchProducts');
 Route::get('products/{branch}', 'ProductController@searchProductDetails');
+=======
+>>>>>>> e3ba45c22c4e9764874266689c72fa25ef36e031

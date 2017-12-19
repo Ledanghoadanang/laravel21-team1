@@ -49,6 +49,8 @@ Route::get('admin/styles/{style}/delete', function(Style $style){
   $style->delete();
   return redirect('admin/styles')->withSuccess('Styles has delete');
 });
+
+
 Route::get('/', 'ProductController@home') ;
 Route::get('/products', 'ProductController@index');
 Route::get('/branchs', 'ProductController@branchs');

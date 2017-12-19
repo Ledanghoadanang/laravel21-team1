@@ -49,8 +49,9 @@ class ProductController extends Controller
   public function saveStaff(){
    $product = Product::create(Input::all());
    return redirect('products/' . $product->id)
-     ->withSuccess('Product has been created.');
+       ->withSuccess('Product has been created.');
   }
+  
   public function edit(Product $product){
    $branchs = Branch::all()->pluck('name', 'id');
    return view('products.edit', compact('product', 'branchs'));

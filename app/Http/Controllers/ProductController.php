@@ -12,15 +12,33 @@ use App\Branch;
 class ProductController extends Controller
 {
 
-  // public function home()
-  // {
-  //  return redirect('/products');
-  // }
-  // public function index()
-  // {
-  //   $products = Product::all();
-  //   return view('products.index',compact('products'));
-  // }
+  public function home()
+  {
+   return redirect('/products');
+  }
+  public function index()
+  {
+    $products = Product::all();
+    return view('products.index',compact('products'));
+  }
+  public function searchProducts(Product $products)
+    {
+      $products = Product::all();
+      return view('products.index')
+      ->with('products', $products);
+    }
+    // public function getProductsByBranch($name){
+    //  $products = Product::with('products')
+    //    ->whereName($name)
+    //    ->first();
+    //  return view('products.index')
+    //    ->with('branch', $branch)
+    //    ->with('products', $branch->products);
+    // }
+    public function searchProductDetails(Product $product)
+    {
+     return view('products.showDetail', compact('product'));
+    }
 
   public function image($id)
   {

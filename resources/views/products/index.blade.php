@@ -1,8 +1,32 @@
 @extends('layouts.shop.master')
-@section('features')
- >>>>>Hello, You Can Add More Features Here<<<<<
-@stop
-@section('recomend')
- >>>>>>Hello Here Is  More Best Recomend For You<<<<<<<
- Best Regard!!!
+@section('features-items')
+  <h2 class="title text-center">DANH MỤC SẢN PHẨM</h2>
+  @foreach($products as $product)
+  <div class="col-sm-4">
+    <div class="product-image-wrapper">
+      <div class="single-products">
+          <div class="productinfo text-center">
+            <img src="{{asset('images/products')}}/{{$product->image}}" alt="" />
+            <h2>{{ $product->price }}</h2>
+            <p>{{ $product->name }}</p>
+
+            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+          </div>
+          <div class="product-overlay">
+            <div class="overlay-content">
+              <h2>{{ $product->price }}</h2>
+              <p>Thương Hiệu Của Thời Gian</p>
+              <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+            </div>
+          </div>
+      </div>
+      <div class="choose">
+        <ul class="nav nav-pills nav-justified">
+          <li><a href="#"><i class="fa fa-plus-square"></i>Yêu thích</a></li>
+          <li><a href="#"><i class="fa fa-plus-square"></i>So sánh giá</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  @endforeach
 @stop

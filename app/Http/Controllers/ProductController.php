@@ -27,5 +27,30 @@ class ProductController extends Controller
     {
      return view('products.showDetail', compact('product'));
     }
-
+    public function indexProduct(){
+      $products = Product::all();
+      return view('admin.products.index', compact('products'));
+    }
+    public function postProduct(){
+      $inputs= Input::all();
+      $product = Product::create($inputs);
+      return redirect('/admin/products');
+    }
+    public function createProduct(){
+      $branchs= Branch::all()->pluck('name','id');
+      return view('admin.products.create',compact('branchs'));
+    }
+    public function editProduct(Product $product){
+      $branchs= Branch::all()->pluck('name','id');//compact (biếnx)
+      return view('admin.products.edit', compact('product', 'branchs'));
+    }
+    public function putProduct(Product $product){
+      $inputs = Input::all();
+      $product->update($inputs);
+      return redirect('/admin/products');
+    }
+    public function deleteProduct(Product $product){
+      $product->delete();
+      return redirect('admin/products');
+    }
 }

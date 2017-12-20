@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use App\Http\Requests;
+use Illuminate\Database\Query\Builder;
 
 use App\Product;
 use App\Branch;
@@ -46,12 +48,24 @@ class ProductController extends Controller
    return view('products.show', compact('product'));
   }
 
-  public function saveStaff(){
-   $product = Product::create(Input::all());
-   return redirect('products/' . $product->id)
-       ->withSuccess('Product has been created.');
+  public function saveProduct(Request $request){
+    $data = $request->all();
+      if ($request->hasFile('image')  )
+      {
+          $file = $request->file('illustrative_image');
+          $filename = $file->getClientOriginalName();
+          $images = time(). "_" . $filename;
+          $destinationPath = public_path('/images');
+          $file->move($destinationPath, $images);
+          $data['illustrative_image'] = $images;
+          $product = Product::create($data);
+      } else {
+        $data['illustrative_image'] = '';
+        $product = Product::create($data);
+      }
+      return redirect('/products');
   }
-  
+
   public function edit(Product $product){
    $branchs = Branch::all()->pluck('name', 'id');
    return view('products.edit', compact('product', 'branchs'));
@@ -62,6 +76,7 @@ class ProductController extends Controller
   return redirect('products/' . $product->id)
     ->withSuccess('Product has been updated.');
   }
+
   public function delete(Product $product){
   $product->delete();
   return redirect('products')->withSuccess('Product has been deleted');

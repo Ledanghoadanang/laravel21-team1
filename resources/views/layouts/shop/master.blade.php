@@ -61,6 +61,9 @@
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
             <h2 class="title text-center">
+              <form>
+                <input type="text" name="search" placeholder="Search..">
+              </form>
             @yield('features-items')
             </h2>
 					</div><!--features_items-->

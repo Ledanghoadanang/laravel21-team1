@@ -1,6 +1,16 @@
-@extends('layouts.shop.master')
+@extends('layouts.frontend.master')
 @section('features-items')
   <h2 class="title text-center">DANH MỤC SẢN PHẨM</h2>
+  <form action="/search" method="POST" role="search" class="title text-center searchform">
+    {{ csrf_field() }}
+    <input type="text"  name="q"placeholder="Search products">
+    <button type="submit" class="btn btn-default">
+      <span class="glyphicon glyphicon-search"> Search </span> 
+    </button>
+  </form>
+
+
+  <br>
   @foreach($products as $product)
   <div class="col-sm-4">
     <div class="product-image-wrapper">

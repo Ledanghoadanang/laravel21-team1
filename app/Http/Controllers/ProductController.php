@@ -48,23 +48,30 @@ class ProductController extends Controller
    return view('products.show', compact('product'));
   }
 
+  public function searchProduct() {
+        $q = Input::get ( 'q' );
+        $products = Product::where('name','LIKE','%'.$q.'%')->get();
+        return view('products.index',compact('products'));
+    }
+
+
   public function saveProduct(Request $request){
     $data = $request->all();
-      if ($request->hasFile('image')  )
-      {
-          $file = $request->file('illustrative_image');
-          $filename = $file->getClientOriginalName();
-          $images = time(). "_" . $filename;
-          $destinationPath = public_path('/images');
-          $file->move($destinationPath, $images);
-          $data['illustrative_image'] = $images;
+        if ($request->hasFile('image')  )
+        {
+            $file = $request->file('image');
+            $filename = $file->getClientOriginalName();
+            $image = time(). "_" . $filename;
+            $destinationPath = public_path('uploads');
+            $file->move($destinationPath, $image);
+            $data['image'] = $image;
+            $product = Product::create($data);
+        } else {
+          $data['image'] = '';
           $product = Product::create($data);
-      } else {
-        $data['illustrative_image'] = '';
-        $product = Product::create($data);
+        }
+          return redirect('/products');
       }
-      return redirect('/products');
-  }
 
   public function edit(Product $product){
    $branchs = Branch::all()->pluck('name', 'id');

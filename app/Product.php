@@ -7,6 +7,7 @@ use App\Product;
 use App\Branch;
 use App\OrderDetail;
 
+
 class Product extends Model
 {
   protected $table='products';

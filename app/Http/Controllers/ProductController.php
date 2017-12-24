@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Input;
 
 use App\Product;
 use App\Branch;
+use App\Http\Requests\CreateProductRequest;
 
 class ProductController extends Controller
 {
@@ -17,17 +18,13 @@ class ProductController extends Controller
    return redirect('/products');
   }
   public function index()
-<<<<<<< HEAD
+
   {
     $products = Product::all();
-    return view('products.index',compact('products'));
+      return view('products.index',compact('products'));
   }
-  public function searchProducts(Product $products)
-    {
-      $products = Product::all();
-      return view('products.index')
-      ->with('products', $products);
-    }
+
+
     // public function getProductsByBranch($name){
     //  $products = Product::with('products')
     //    ->whereName($name)
@@ -36,61 +33,56 @@ class ProductController extends Controller
     //    ->with('branch', $branch)
     //    ->with('products', $branch->products);
     // }
-    public function searchProductDetails(Product $product)
-    {
-     return view('products.showDetail', compact('product'));
-    }
-
-  public function image($id)
-=======
->>>>>>> e3ba45c22c4e9764874266689c72fa25ef36e031
-  {
-    $products = Product::all();
-    return view('products.index',compact('products'));
-  }
 
   public function branchs()
   {
-   $products = Branch::all();
-   return view('products.index',compact('products'));
-
+      $products = Branch::all();
+      return view('products.index',compact('products'));
   }
+
   public function getProductsByBranch($name){
-   $branch = Branch::with('products')
-     ->whereName($name)
-     ->first();
-   return view('products.index')
-     ->with('branch', $branch)
-     ->with('products', $branch->products);
+      $branch = Branch::with('products')
+      ->whereName($name)
+      ->first();
+      return view('products.index')
+      ->with('branch', $branch)
+      ->with('products', $branch->products);
   }
 
-  public function create(){
-   $branchs = Branch::all()->pluck('name', 'id');
-   return view('products.create')->with('branchs', $branchs);
+  public function indexProduct(){
+      $products = Product::paginate(5);
+      return view('admin.products.index', compact('products'));
+  }
+
+  public function postProduct(CreateProductRequest $request){
+      $inputs= Input::all();
+      $product = Product::create( $inputs );
+      return redirect('/admin/products');
+  }
+
+
+ public function createProduct(){
+      $branchs= Branch::all()->pluck('name','id');
+      return view('admin.products.create',compact('branchs'));
+  }
+
+ public function editProduct(Product $product){
+      $branchs= Branch::all()->pluck('name','id');//compact (biếnx)
+      return view('admin.products.edit', compact('product', 'branchs'));
+  }
+
+  public function putProduct(Product $product){
+      $inputs = Input::all();
+      $product->update($inputs);
+      return redirect('/admin/products');
+  }
+
+  public function deleteProduct(Product $product){
+      $product->delete();
+      return redirect('admin/products');
   }
 
   public function show(Product $product){
-   return view('products.show', compact('product'));
-  }
-
-  public function saveStaff(){
-   $product = Product::create(Input::all());
-   return redirect('products/' . $product->id)
-       ->withSuccess('Product has been created.');
-  }
-  
-  public function edit(Product $product){
-   $branchs = Branch::all()->pluck('name', 'id');
-   return view('products.edit', compact('product', 'branchs'));
-  }
-
-  public function put(Product $product){
-  $product -> update(Input::all());
-  return redirect('products/' . $product->id)
-    ->withSuccess('Product has been updated.');
-  }
-  public function delete(Product $product){
-  $product->delete();
-  return redirect('products')->withSuccess('Product has been deleted');
+     return view('products.show', compact('product'));
   }
 }

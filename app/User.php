@@ -16,9 +16,12 @@ class User extends Authenticatable
      */
     protected $table='users';
     protected $fillable = [
-        'name', 'email', 'password','phone','adress','gender','role'
+        'name', 'email', 'password','phone','address','gender','role'
     ];
 
+    protected $login = [
+       'role' => 'boolean'
+    ];
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -27,6 +30,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
 
     public function orders(){
       return $this->hasMany('App\Order');

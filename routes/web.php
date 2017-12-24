@@ -14,26 +14,22 @@ use Illuminate\Support\Facades\Input;
 |
 */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Route::get('/admin', function () {
+  if(Auth::check('email')){
     return view('admin.index');
+  }
+  else {
+    return view('admin.login');
+  }
+})->middleware('checkadmin');
+
+Route::post('admin/products',function(CreateProductRequest $request) {
+  if($request->hasFile('image')){
+    echo 'Đã có file';
+  }
+  else {
+    echo 'chưa có file';
+  }
 });
 Route::get('/admin/styles','StyleController@index');
 Route::post('admin/styles', 'StyleController@postStyle');
@@ -41,10 +37,10 @@ Route::get('admin/styles/create', 'StyleController@createStyle');
 Route::get('admin/styles/{style}/edit', 'StyleController@editStyle');
 Route::put('admin/styles/{style}', 'StyleController@putStyle');
 Route::get('admin/styles/{style}/delete','StyleController@deleteStyle');
-
 Route::get('/products', 'ProductController@searchProducts');
 Route::get('/admin/products', 'ProductController@indexProduct');
 Route::post('admin/products', 'ProductController@postProduct');
+
 Route::get('admin/products/create', 'ProductController@createProduct');
 Route::get('admin/products/{product}/edit', 'ProductController@editProduct');
 Route::put('admin/products/{product}', 'ProductController@putProduct');
@@ -62,12 +58,12 @@ Route::put('admin/styles/{style}', function(Style $style){
   // return redirect('/admin/styles/' . $style->id)->withSuccess('Styles has been update');
   return redirect('/admin/styles');
 });
+
 Route::get('admin/styles/{style}/delete', function(Style $style){
   $style->delete();
   return redirect('admin/styles')->withSuccess('Styles has delete');
 });
 Route::get('/', 'ProductController@home') ;
->>>>>>> e3ba45c22c4e9764874266689c72fa25ef36e031
 Route::get('/products', 'ProductController@index');
 Route::get('/branchs', 'ProductController@branchs');
 Route::get('products/branchs/{name}', 'ProductController@getProductsByBranch');
@@ -78,8 +74,11 @@ Route::get('products/{product}/edit', 'ProductController@edit');
 Route::put('products/{product}', 'ProductController@put');
 Route::get('products/{product}/delete', 'ProductController@delete');
 Route::get('pic/{id}', 'ProductController@showPicture');
-<<<<<<< HEAD
-Route::get('/products', 'ProductController@searchProducts');
+// Route::get('/products', 'ProductController@searchProducts');
 Route::get('products/{branch}', 'ProductController@searchProductDetails');
-=======
->>>>>>> e3ba45c22c4e9764874266689c72fa25ef36e031
+// Route::get('/products', 'ProductController@searchProducts');
+Route::get('products/{branch}', 'ProductController@searchProductDetails');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

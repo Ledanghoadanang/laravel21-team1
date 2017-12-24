@@ -4,6 +4,7 @@ use App\Style;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use Auth;
+use App\Http\Requests\CreateStyleRequest;
 
 class StyleController extends Controller
 {
@@ -11,11 +12,13 @@ class StyleController extends Controller
       $styles = Style::all();
       return view('admin.styles.index', compact('styles'));
     }
+
     public function createStyle(){
       $styles= Style::all()->pluck('name','id');
       return view('admin.styles.create',compact('styles'));
     }
-    public function postStyle(){
+
+    public function postStyle(CreateStyleRequest $request){
       $inputs= Input::all();//lấy tất cả cả input từ form put lên
       $style = Style::create($inputs);//hàm tạo con mèo
       return redirect('/admin/styles');//$cat->id:câp nhập vs id con mèox

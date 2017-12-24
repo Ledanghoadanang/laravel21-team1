@@ -56,16 +56,20 @@ class ProductController extends Controller
 
 
   public function saveProduct(Request $request){
-    $data = $request->all();
-        if ($request->hasFile('image')  )
+        $data = $request->all();
+        $this->validate($request, [
+            'image' => 'mimes:jpg,jpeg,png|max:800',
+        ]);
+        if ($request->hasFile('image'))
         {
             $file = $request->file('image');
             $filename = $file->getClientOriginalName();
             $image = time(). "_" . $filename;
-            $destinationPath = public_path('uploads');
+            $destinationPath = public_path('\images\products');
             $file->move($destinationPath, $image);
             $data['image'] = $image;
             $product = Product::create($data);
+
         } else {
           $data['image'] = '';
           $product = Product::create($data);

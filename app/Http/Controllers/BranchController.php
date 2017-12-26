@@ -5,6 +5,7 @@ use App\Branch;
 use App\Style;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateBranchRequest;
 
 class BranchController extends Controller
 {
@@ -12,7 +13,7 @@ class BranchController extends Controller
       $branchs = Branch::all();
       return view('admin.branchs.index', compact('branchs'));
     }
-    public function postBranch(){
+    public function postBranch(CreateBranchRequest $request ){
       $inputs= Input::all();
       $branch = Branch::create($inputs);
       return redirect('/admin/branchs');

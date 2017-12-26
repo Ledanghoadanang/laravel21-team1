@@ -23,14 +23,7 @@ Route::get('/admin', function () {
   }
 })->middleware('checkadmin');
 
-Route::post('admin/products',function(CreateProductRequest $request) {
-  if($request->hasFile('image')){
-    echo 'Đã có file';
-  }
-  else {
-    echo 'chưa có file';
-  }
-});
+
 Route::get('/admin/styles','StyleController@index');
 Route::post('admin/styles', 'StyleController@postStyle');
 Route::get('admin/styles/create', 'StyleController@createStyle');
@@ -69,7 +62,7 @@ Route::get('/branchs', 'ProductController@branchs');
 Route::get('products/branchs/{name}', 'ProductController@getProductsByBranch');
 Route::get('products/create', 'ProductController@create');
 Route::get('/products/{product}', 'ProductController@show');
-Route::post('products', 'ProductController@saveStaff');
+// Route::post('products', 'ProductController@saveStaff');
 Route::get('products/{product}/edit', 'ProductController@edit');
 Route::put('products/{product}', 'ProductController@put');
 Route::get('products/{product}/delete', 'ProductController@delete');

@@ -37,9 +37,7 @@
 <div class="form-group">
   {!! Form::label('image', 'Image') !!}
   <div class="form-controls">
-    <form class="" action="{{ )}}" method="post">
-        <input type="file" name="image" value="">
-    </form>
+    {!! Form::file('image', null, ['class' => 'form-control']) !!}
   </div>
   @if ( $errors->has('image') )
     <span class="text-danger">

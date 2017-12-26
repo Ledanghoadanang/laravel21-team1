@@ -12,13 +12,10 @@ use App\Http\Requests\CreateProductRequest;
 
 class ProductController extends Controller
 {
-
-  public function home()
-  {
-   return redirect('/products');
+  public function home(){
+      return redirect('/products');
   }
   public function index()
-
   {
     $products = Product::all();
       return view('products.index',compact('products'));
@@ -55,8 +52,25 @@ class ProductController extends Controller
   }
 
   public function postProduct(CreateProductRequest $request){
-      $inputs= Input::all();
-      $product = Product::create( $inputs );
+ $data = $request->all();
+ $this->validate($request, [
+       'image' => 'mimes:jpg,jpeg,png|max:800',
+         ]);
+   if ($request->hasFile('image'))
+     {
+           $file = $request->file('image');
+           $filename = $file->getClientOriginalName();
+           $image = time(). "_" . $filename;
+           $destinationPath = public_path('\images\products');
+           $file->move($destinationPath, $image);
+           $data['image'] = $image;
+           $product = Product::create($data);
+     }else
+     {
+       $data['image'] = '';
+       $product = Product::create($data);
+
+     }
       return redirect('/admin/products');
   }
 
@@ -66,9 +80,15 @@ class ProductController extends Controller
       return view('admin.products.create',compact('branchs'));
   }
 
+
  public function editProduct(Product $product){
       $branchs= Branch::all()->pluck('name','id');//compact (biếnx)
       return view('admin.products.edit', compact('product', 'branchs'));
+}
+  public function edit(Product $product){
+   $branchs = Branch::all()->pluck('name', 'id');
+   return view('products.edit', compact('product', 'branchs'));
+
   }
 
   public function putProduct(Product $product){

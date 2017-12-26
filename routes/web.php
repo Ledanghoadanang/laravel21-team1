@@ -78,6 +78,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 ///carts
-Route::get('/carts', 'CartController@index');
-Route::get('carts/{id}/add', 'CartController@add');
-Route::get('carts/delete/{rowId}', 'CartController@delete');
+Route::get('/carts', 'ShoppingCartController@index');
+Route::get('carts/{id}/add', 'ShoppingCartController@add');
+Route::get('carts/delete/{rowId}', 'ShoppingCartController@delete');

@@ -24,14 +24,15 @@
             <div class="overlay-content">
               <h2>{{ $product->price }}</h2>
               <p>Thương Hiệu Của Thời Gian</p>
-              <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+              <a href="carts/{id}/add"  class="btn btn-default add-to-cart add_product" onclick="addCart({{$product->id}})"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
             </div>
           </div>
       </div>
       <div class="choose">
         <ul class="nav nav-pills nav-justified">
-          <li><a href="#"><i class="fa fa-plus-square"></i>Yêu thích</a></li>
-          <li><a href="{{ url('products/' . $product ->id) }}"><i class="fa fa-plus-square"></i>Chi tiết:{{ $product->name }}</a></li>
+          <li><a href="carts/{id}/add"  class="btn btn-default add-to-cart add_product" onclick="addCart({{$product->id}})"><i class="fa fa-shopping-cart"></i>Thêm</a></li>
+
+          <li><a href="{{ url('products/' . $product ->id) }}"><i class="fa fa-plus-square"></i>Chi tiết</a></li>
         </ul>
       </div>
     </div>

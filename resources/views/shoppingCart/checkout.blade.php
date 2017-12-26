@@ -548,4 +548,83 @@
   <script src="{{asset('js/jquery.prettyPhoto.js')}}"></script>
   <script src="{{asset('js/main.js')}}"></script>
 </body>
+
+<script type="text/javascript">
+       (function(){
+           // $("#cart").on("click", function() {
+           //
+           //     $(".shopping-cart").fadeToggle( "fast");
+           // });
+           $("#cart").on("click", function() {
+               var root = '{{url('/')}}';
+               var str = "";
+               $.get(root + '/loadCarts', function(data, status){
+                   // console.log(data);
+                   $.each(data.data, function (key, value) {
+                       // console.log(value);
+                       str += '<li>\
+                       <span class="item"><span class="item-left">\
+                       <img src="http://lorempixel.com/50/50/" alt="" />\
+                       <span class="item-info"><span>' + value.name + '</span><span>23$ - </span></span></span>\
+                       <span class="item-right"><button class="btn btn-xs btn-danger pull-right">x</button></span></span>\
+                       </li>';
+                   });
+               }).then(function(){
+                   // console.log(str);
+                   $('.list-cart').replaceWith('<div class="list-cart">' + str + '</div>');
+                   // $('#cart-list').append(str);
+                   $(".shopping-cart").fadeToggle( "fast");
+               });
+           });
+       })();
+       function addCart(id)
+       {
+           var root = '{{url('/carts')}}';
+           $.get(root + '/' + id + '/' + 'add', function(data, status){
+               console.log(data);
+           //   $('#count').replaceWith('<span id="count">' + data.count +'</span> ');
+             $('#count').replaceWith('<span id="count">' + data.count +'</span> ');
+           });
+       }
+   </script>
+   <style>
+       ul.dropdown-cart{
+       min-width:250px;
+       }
+       ul.dropdown-cart li .item{
+       display:block;
+       padding:3px 10px;
+       margin: 3px 0;
+       }
+       ul.dropdown-cart li .item:hover{
+       background-color:#f3f3f3;
+       }
+       ul.dropdown-cart li .item:after{
+       visibility: hidden;
+       display: block;
+       font-size: 0;
+       content: " ";
+       clear: both;
+       height: 0;
+       }
+       ul.dropdown-cart li .item-left{
+       float:left;
+       }
+       ul.dropdown-cart li .item-left img,
+       ul.dropdown-cart li .item-left span.item-info{
+       float:left;
+       }
+       ul.dropdown-cart li .item-left span.item-info{
+       margin-left:10px;
+       }
+       ul.dropdown-cart li .item-left span.item-info span{
+       display:block;
+       }
+       ul.dropdown-cart li .item-right{
+       float:right;
+       }
+       ul.dropdown-cart li .item-right button{
+       margin-top:14px;
+       }
+   </style>
 </html>

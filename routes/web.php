@@ -33,7 +33,6 @@ Route::get('admin/styles/{style}/delete','StyleController@deleteStyle');
 Route::get('/products', 'ProductController@searchProducts');
 Route::get('/admin/products', 'ProductController@indexProduct');
 Route::post('admin/products', 'ProductController@postProduct');
-
 Route::get('admin/products/create', 'ProductController@createProduct');
 Route::get('admin/products/{product}/edit', 'ProductController@editProduct');
 Route::put('admin/products/{product}', 'ProductController@putProduct');
@@ -72,3 +71,13 @@ Route::get('products/{branch}', 'ProductController@searchProductDetails');
 Route::get('products/{branch}', 'ProductController@searchProductDetails');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
+
+
+///carts
+Route::get('/carts', 'CartController@index');
+Route::get('carts/{id}/add', 'CartController@add');
+Route::get('carts/delete/{rowId}', 'CartController@delete');

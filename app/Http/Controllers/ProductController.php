@@ -13,10 +13,12 @@ use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
+
 public function home()
   {
     return redirect('/products');
   }
+
 public function index()
   {
     $products = Product::all();
@@ -28,6 +30,7 @@ public function branchs()
     $products = Branch::all();
     return view('products.index',compact('products'));
   }
+
 public function getProductsByBranch($name)
   {
     $branch = Branch::with('products')

@@ -62,9 +62,14 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <section class="content-header">
+
+
+
+
       @yield('content')
-    </section>
-    @include('layouts.admin.content-wrap')
+
+
+  
   </div>
   <!-- /.content-wrapper -->
     @include('layouts.admin.footer')

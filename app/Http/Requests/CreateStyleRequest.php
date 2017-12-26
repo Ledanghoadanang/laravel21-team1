@@ -24,7 +24,7 @@ class CreateStyleRequest extends FormRequest
     public function rules()
     {
       return [
-          'name' => 'required|min:3|max:6'
+          'name' => 'required'
       ];
     }
 }

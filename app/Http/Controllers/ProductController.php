@@ -9,6 +9,7 @@ use App\Http\Requests;
 use Illuminate\Database\Query\Builder;
 use App\Product;
 use App\Branch;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -51,7 +52,10 @@ public function show(Product $product)
 public function searchProduct()
   {
     $product = Input::get ( 'product' );
-    $products = Product::where('name','LIKE','%'.$product.'%')->get();
+    $productUpercase = Str::lower($product);
+    $products = Product::where('name','LIKE','%'.$product.'%')
+                        ->orWhere('name','LIKE','%'.$productUpercase.'%')
+                        ->get();
     return view('products.index',compact('products'));
   }
 

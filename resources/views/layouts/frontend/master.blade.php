@@ -26,11 +26,11 @@
 
 <body>
 	<header id="header"><!--header-->
-		@include('layouts.shop.header')
+		@include('layouts.frontend.header')
 	</header><!--/header-->
 
 	<section id="slider"><!--slider-->
-		@include('layouts.shop.slide')
+		@include('layouts.frontend.slide')
 	</section><!--/slider-->
 
 	<section>
@@ -38,17 +38,17 @@
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
-            <h2>Category</h2>
+            <h2>Sản Phẩm</h2>
             <div class="panel-group category-products" id="accordian"><!--category-productsr-->
-              @include('layouts.shop.category-product')
+              @include('layouts.frontend.category-product')
 						</div><!--/category-products-->
 
 						<div class="brands_products"><!--brands_products-->
-							@include('layouts.shop.branch-sidebar')
+							@include('layouts.frontend.branch-sidebar')
 						</div><!--/brands_products-->
 
 						<div class="price-range"><!--price-range-->
-							@include('layouts.shop.price-range')
+							@include('layouts.frontend.price-range')
 						</div><!--/price-range-->
 
 						<div class="shipping text-center"><!--shipping-->
@@ -61,19 +61,16 @@
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
             <h2 class="title text-center">
-              <form>
-                <input type="text" name="search" placeholder="Search..">
-              </form>
             @yield('features-items')
             </h2>
 					</div><!--features_items-->
 
 					<div class="category-tab"><!--category-tab-->
-						@include('layouts.shop.category-tab')
+						@include('layouts.frontend.category-tab')
 					</div><!--/category-tab-->
 
 					<div class="recommended_items"><!--recommended_items-->
-						@include('layouts.shop.recommend-item')
+						@include('layouts.frontend.recommend-item')
             <h2 class="title text-center">
             @yield('recomend')
             </h2>
@@ -85,7 +82,7 @@
 	</section>
 
 	<footer id="footer"><!--Footer-->
-    @include('layouts.shop.footer')
+    @include('layouts.frontend.footer')
 	</footer><!--/Footer-->
 
 

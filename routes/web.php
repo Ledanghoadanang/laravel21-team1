@@ -63,16 +63,12 @@ Route::get('products/branchs/{name}', 'ProductController@getProductsByBranch');
 Route::get('products/create', 'ProductController@create');
 Route::get('/products/{product}', 'ProductController@show');
 Route::post('products', 'ProductController@saveProduct');
-
 Route::get('products/{product}/edit', 'ProductController@edit');
 Route::put('products/{product}', 'ProductController@put');
 Route::get('products/{product}/delete', 'ProductController@delete');
-Route::get('pic/{id}', 'ProductController@showPicture');
-// Route::get('/products', 'ProductController@searchProducts');
+Route::post('/search', 'ProductController@searchProduct');
+Route::post('/searchPrice', 'ProductController@searchProductByPrices');
 Route::get('products/{branch}', 'ProductController@searchProductDetails');
-// Route::get('/products', 'ProductController@searchProducts');
 Route::get('products/{branch}', 'ProductController@searchProductDetails');
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');

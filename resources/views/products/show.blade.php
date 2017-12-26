@@ -1,4 +1,4 @@
-@extends('layouts.shop.master')
+@extends('layouts.frontend.master')
 @section('features-items')
   <h2 class="title text-center">
     Thông tin chi tiết:  {{ $product->name }}

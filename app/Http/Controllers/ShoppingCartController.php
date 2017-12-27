@@ -35,6 +35,12 @@ class ShoppingCartController extends Controller
     {
        return view('shoppingCart.cart');
     }
+
+    public function checkout()
+    {
+       return view('shoppingCart.checkout');
+    }
+
     public function store_order(Request $request)
     {
         $name = $request->Input('name_receiver');

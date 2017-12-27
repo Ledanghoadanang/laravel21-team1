@@ -25,6 +25,13 @@
 </head><!--/head-->
 
 <body>
+  <div class="btn btn-default"  style="position: fixed; top: 40px; right: 5px; background-color: #FE980F">
+  	@if ( Cart::count() > 0 )
+  		<a id="cart" href="{{ url('carts')}}"><i class="fa fa-shopping-cart"></i><span id="count"> ({{ Cart::count() }})</span></a>
+  	@else
+  		<a id="cart" href="{{ url('carts')}}" ><i class="fa fa-shopping-cart"></i><span id="count"></span></a>
+  	@endif
+  	</div>
 	<header id="header"><!--header-->
 		<div class="header_top"><!--header_top-->
 			<div class="container">
@@ -247,12 +254,78 @@
 					</div>
 				</div>
 			</div>
+
+
+      <div class="row">
+      					<div class="col-sm-4">
+      						<div class="logo pull-left">
+      							<a href="{{url('/')}}"><img src="{{ asset('images/home/logo.png') }}" alt="" /></a>
+      						</div>
+      						<div class="btn-group pull-right">
+      						</div>
+      					</div>
+      					<div class="col-sm-8">
+      						<div class="shop-menu pull-right">
+      							<ul class="nav navbar-nav">
+      								<!-- <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li> -->
+      								<!-- @if ( Cart::count() > 0 )
+      								<li><a id="cart" href="{{ url('carts')}}"><i class="fa fa-shopping-cart"></i><span id="count"> Giỏ Hàng({{ Cart::count() }})</span></a></li>
+      								@else
+      								<li><a id="cart" href="{{ url('carts')}}" ><i class="fa fa-shopping-cart"></i><span id="count"> Giỏ Hàng</span></a></li>
+      								@endif -->
+      								@if (Auth::check())
+      								<li>
+      									<a href="{{ url('carts/manage')}}"><i class="fa fa-check-square-o" aria-hidden="true"></i> Quản lý đơn hàng</a>
+      								</li>
+      								<li>
+      									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user"></i>
+                                          	{{ Auth::user()->name }} <span class="caret"></span>
+                                      	</a>
+
+                                      	<ul class="dropdown-menu" style="min-width: 110px;">
+                                      		<li><a href="{{ url('/user')}}">Xem Profile</li></a>
+                                      		<li><a href="{{ url('/change-password')}}">Đổi mật khẩu</a></li>
+                                      		<li>
+                                              <a href="{{ route('logout') }}"
+                                                  onclick="event.preventDefault();
+                                                           document.getElementById('logout-form').submit();">
+                                                  Logout
+                                              </a>
+                                              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                  {{ csrf_field() }}
+                                              </form>
+                                          	</li>
+                                          </ul>
+      								</li>
+
+      								@else
+      								<li><a href="{{ url('login') }}"><i class="fa fa-user" aria-hidden="true"></i> Đăng Nhập</a></li>
+      								<li><a href="{{ url('register') }}"><i class="fa fa-lock"></i> Đăng Ký</a></li>
+      								@endif
+      							</ul>
+      						</div>
+      					</div>
+      				</div>
+
 			<div class="review-payment">
-				<h2>Review & Payment</h2>
+				<h2>Thông tin giỏ hàng & Thanh toán</h2>
 			</div>
 
 			<div class="table-responsive cart_info">
-				<table class="table table-condensed">
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <table class="table table-condensed">
 					<thead>
 						<tr class="cart_menu">
 							<td class="image">Item</td>
@@ -264,93 +337,44 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/cart/one.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="{{asset('images/cart/two.png')}}" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/cart/three.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
+            <?php foreach(Cart::content() as $row) :?>
+            <tr>
+              <td class="cart_product">
+                  <a href=""><img src="images/cart/one.png" alt=""></a>
+              </td>
+              <td class="cart_description">
+                  <h4><strong><?php echo $row->name; ?></strong></h4>
+                  <p><?php echo ($row->options->has('size') ? $row->options->size : ''); ?></p>
+              </td>
+              <td class="cart_price">
+                  <p><?php echo $row->price; ?></p>
+              </td>
+              <td class="cart_quantity">
+                <div class="cart_quantity_button">
+                    <a class="cart_quantity_up" href=""> + </a>
+                      <input class="cart_quantity_input" type="text" name="quantity" value="<?php echo $row->qty; ?>" autocomplete="off" size="2">
+                    <a class="cart_quantity_down" href=""> - </a>
+                </div>
+              </td>
+              <td class="cart_total">
+                <p class="cart_total_price"></p>
+              </td>
+              <td class="cart_delete">
+                <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+              </td>
+            </tr>
+            <?php endforeach;?>
 						<tr>
 							<td colspan="4">&nbsp;</td>
 							<td colspan="2">
 								<table class="table table-condensed total-result">
 									<tr>
 										<td>Cart Sub Total</td>
-										<td>$59</td>
+										<td>{{ Cart::subtotal() }}</td>
 									</tr>
 									<tr>
 										<td>Exo Tax</td>
-										<td>$2</td>
+										<td>{{ Cart::tax() }}</td>
 									</tr>
 									<tr class="shipping-cost">
 										<td>Shipping Cost</td>
@@ -358,14 +382,14 @@
 									</tr>
 									<tr>
 										<td>Total</td>
-										<td><span>$61</span></td>
+										<td><span>{{ Cart::total() }}</span></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 					</tbody>
 				</table>
-			</div>
+      </div>
 			<div class="payment-options">
 					<span>
 						<label><input type="checkbox"> Direct Bank Transfer</label>

@@ -95,9 +95,9 @@
 							<ul class="nav navbar-nav">
 								<li><a href=""><i class="fa fa-user"></i> Account</a></li>
 								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html" class="active"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="{{url('checkout')}}" class="active"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+								<li><a href="{{url('carts')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="{{url('login')}}"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>
 						</div>
 					</div>
@@ -119,14 +119,14 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.html">Home</a></li>
+								<li><a href="{{url('products')}}">Home</a></li>
 								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
+                                        <li><a href="{{url('products')}}">Products</a></li>
 										<li><a href="product-details.html">Product Details</a></li>
-										<li><a href="checkout.html" class="active">Checkout</a></li>
-										<li><a href="cart.html">Cart</a></li>
-										<li><a href="login.html">Login</a></li>
+										<li><a href="{{url('checkout')}}" class="active">Checkout</a></li>
+										<li><a href="{{url('carts')}}">Cart</a></li>
+										<li><a href="{{url('login')}}">Login</a></li>
                                     </ul>
                                 </li>
 								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
@@ -254,8 +254,6 @@
 					</div>
 				</div>
 			</div>
-
-
       <div class="row">
       					<div class="col-sm-4">
       						<div class="logo pull-left">
@@ -312,19 +310,6 @@
 			</div>
 
 			<div class="table-responsive cart_info">
-
-
-
-
-
-
-
-
-
-
-
-
-
         <table class="table table-condensed">
 					<thead>
 						<tr class="cart_menu">
@@ -347,17 +332,21 @@
                   <p><?php echo ($row->options->has('size') ? $row->options->size : ''); ?></p>
               </td>
               <td class="cart_price">
-                  <p><?php echo $row->price; ?></p>
+
+                  <p style="margin-top: 20px">{{ number_format($row->price, 0, ',','.') . ' VNĐ'}}</p>
               </td>
               <td class="cart_quantity">
-                <div class="cart_quantity_button">
-                    <a class="cart_quantity_up" href=""> + </a>
-                      <input class="cart_quantity_input" type="text" name="quantity" value="<?php echo $row->qty; ?>" autocomplete="off" size="2">
-                    <a class="cart_quantity_down" href=""> - </a>
+                    								<div class="cart_quantity_button">
+                    								<?php $rowId = (string)$row->rowId ?>
+                    								<form>
+                      									<input type="button" value=" - " onclick="down('{{ $row->rowId }}')" >
+                      									<input type="text" id="{{$row->rowId}}" name="quantity" value="{{ $row->qty }}" size="2" style="text-align: center;" >
+                      									<input type="button" value=" + " onclick="up('{{ $row->rowId }}')" >
+                    								</form>
                 </div>
               </td>
               <td class="cart_total">
-                <p class="cart_total_price"></p>
+                <p class="cart_total_price">{{ number_format($row->subtotal, 0, '.','.') . ' VNĐ' }}</p>
               </td>
               <td class="cart_delete">
                 <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
@@ -382,7 +371,7 @@
 									</tr>
 									<tr>
 										<td>Total</td>
-										<td><span>{{ Cart::total() }}</span></td>
+										<td><span>{{ Cart::total() . ' VNĐ' }}</span></td>
 									</tr>
 								</table>
 							</td>
@@ -609,6 +598,30 @@
            //   $('#count').replaceWith('<span id="count">' + data.count +'</span> ');
              $('#count').replaceWith('<span id="count">' + data.count +'</span> ');
            });
+
+           function down(rowId)
+        	 {
+        	 	var root = '{{ url('/carts') }}';
+        	 	$.get( root + '/' + rowId + '/down-count', function(data, status){
+        	 		var sub = data.subtotal.toLocaleString();
+        	 		console.log(data);
+        	 		$('#'+ rowId).replaceWith('<input type="text" id="'+rowId+'" name="quantity" value="' + data.qty +'" size="2" style="text-align: center;">');
+        	 		$('#sub' + rowId).replaceWith('<span id="sub'+rowId+'">'+sub+' VNĐ </span>');
+        	 	});
+        	 }
+        	function up(rowId)
+        	{
+        		var root = '{{ url('/carts') }}';
+        	 	$.get( root + '/' + rowId + '/up-count', function(data, status){
+        	 		var sub = data.subtotal.toLocaleString();
+        	 		console.log(data);
+        	 		$('#'+ rowId).replaceWith('<input type="text" id="'+rowId+'" name="quantity" value="' + data.qty +'" size="2" style="text-align: center;">');
+        	 		$('#sub' + rowId).replaceWith('<span id="sub'+rowId+'">'+sub+' VNĐ </span>');
+        	 	});
+        	}
+        	$( ".delete" ).click(function() {
+        	  alert( "xóa thành công." );
+        	});
        }
    </script>
    <style>

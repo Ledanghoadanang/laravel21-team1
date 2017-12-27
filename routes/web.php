@@ -65,7 +65,9 @@ Route::post('products', 'ProductController@saveProduct');
 Route::get('products/{product}/edit', 'ProductController@edit');
 Route::put('products/{product}', 'ProductController@put');
 Route::get('products/{product}/delete', 'ProductController@delete');
-Route::post('/search', 'ProductController@searchProduct');
+
+Route::get('/search', 'ProductController@searchProduct');
+
 Route::post('/searchPrice', 'ProductController@searchProductByPrices');
 Route::get('products/{branch}', 'ProductController@searchProductDetails');
 Route::get('products/{branch}', 'ProductController@searchProductDetails');
@@ -81,6 +83,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/carts', 'ShoppingCartController@carts');
 Route::get('/checkout', 'ShoppingCartController@checkout');
 Route::get('carts/{id}/add', 'ShoppingCartController@add');
+Route::get('carts/{rowId}/down-count', 'ShoppingCartController@down_count');
+Route::get('carts/{rowId}/up-count', 'ShoppingCartController@up_count');
 Route::get('carts/delete/{rowId}', 'ShoppingCartController@delete');
 /////////
 ///carts
@@ -91,7 +95,6 @@ Route::get('carts/delete/{rowId}', 'ShoppingCartController@delete');
 		// Route::get('carts/manage' , 'CartController@manage');
 		// Route::get('carts/manage/{id}/cancel' , 'CartController@cancel');
 		// Route::get('carts/manage/{id}/detail' , 'CartController@detail');
-		// Route::get('carts/{rowId}/down-count', 'CartController@down_count');
-		// Route::get('carts/{rowId}/up-count', 'CartController@up_count');
+
 		// Route::get('carts/manage/export', 'CartController@export_order');
 		// Route::get('carts/manage/{id}/detail/export', 'CartController@export_order_detail');

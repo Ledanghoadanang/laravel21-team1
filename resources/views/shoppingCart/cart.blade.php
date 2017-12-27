@@ -96,9 +96,9 @@
 							<ul class="nav navbar-nav">
 								<li><a href=""><i class="fa fa-user"></i> Account</a></li>
 								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.html" class="active"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+                <li><a href="{{url('checkout')}}" class="active"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+								<li><a href="{{url('carts')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="{{url('login')}}"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>
 						</div>
 					</div>
@@ -182,17 +182,21 @@
                   <p><?php echo ($row->options->has('size') ? $row->options->size : ''); ?></p>
               </td>
               <td class="cart_price">
-                  <p><?php echo $row->price; ?></p>
+
+                  <p style="margin-top: 20px">{{ number_format($row->price, 0, ',','.') . ' VNĐ'}}</p>
               </td>
               <td class="cart_quantity">
-                <div class="cart_quantity_button">
-                    <a class="cart_quantity_up" href=""> + </a>
-                      <input class="cart_quantity_input" type="text" name="quantity" value="<?php echo $row->qty; ?>" autocomplete="off" size="2">
-                    <a class="cart_quantity_down" href=""> - </a>
+                    								<div class="cart_quantity_button">
+                    								<?php $rowId = (string)$row->rowId?>
+                    								<form>
+                      									<input type="button" value=" - " onclick="down('{{ $row->rowId }}')" >
+                      									<input type="text" id="{{$row->rowId}}" name="quantity" value="{{ $row->qty }}" size="2" style="text-align: center;" >
+                      									<input type="button" value=" + " onclick="up('{{ $row->rowId }}')" >
+                    								</form>
                 </div>
               </td>
               <td class="cart_total">
-                <p class="cart_total_price"><?php echo $row->total; ?></p>
+                <p class="cart_total_price">{{ number_format($row->subtotal, 0, '.','.') . ' VNĐ' }}</p>
               </td>
               <td class="cart_delete">
                 <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
@@ -217,7 +221,7 @@
 									</tr>
 									<tr>
 										<td>Total</td>
-										<td><span>{{ Cart::total() }}</span></td>
+										<td><span>{{ Cart::total() . ' VNĐ' }}</span></td>
 									</tr>
 								</table>
 							</td>

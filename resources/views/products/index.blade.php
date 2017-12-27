@@ -17,25 +17,26 @@
             <img src="{{asset('images/products')}}/{{$product->image}}" alt="" />
             <h2>{{ $product->price }}</h2>
             <p>{{ $product->name }} @if($product->branch) - {{ $product->branch->name }} @endif</p>
-
             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
           </div>
           <div class="product-overlay">
             <div class="overlay-content">
               <h2>{{ $product->price }}</h2>
               <p>Thương Hiệu Của Thời Gian</p>
-              <a href="carts/{id}/add"  class="btn btn-default add-to-cart add_product" onclick="addCart({{$product->id}})"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+              <a href="javascript:void(0)"  class="btn btn-default add-to-cart add_product" onclick="addCart({{$product->id}})"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
             </div>
           </div>
       </div>
       <div class="choose">
         <ul class="nav nav-pills nav-justified">
-          <li><a href="carts/{id}/add"  class="btn btn-default add-to-cart add_product" onclick="addCart({{$product->id}})"><i class="fa fa-shopping-cart"></i>Thêm</a></li>
-
+          @if($product->id)
+          <li><a href="javascript:void(0)"  class="btn btn-default add-to-cart add_product" onclick="addCart({{$product->id}})"><i class="fa fa-shopping-cart"></i>Thêm</a></li>
+          @endif
           <li><a href="{{ url('products/' . $product ->id) }}"><i class="fa fa-plus-square"></i>Chi tiết</a></li>
         </ul>
       </div>
     </div>
   </div>
   @endforeach
+  <script src="{{ asset('js/jquery.js') }}"></script>
 @stop

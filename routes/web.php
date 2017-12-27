@@ -82,3 +82,16 @@ Route::get('/carts', 'ShoppingCartController@carts');
 Route::get('/checkout', 'ShoppingCartController@checkout');
 Route::get('carts/{id}/add', 'ShoppingCartController@add');
 Route::get('carts/delete/{rowId}', 'ShoppingCartController@delete');
+/////////
+///carts
+		// Route::get('/carts', 'CartController@index');
+		// Route::get('carts/delete/{rowId}', 'CartController@delete');
+		// Route::get('carts/checkout', 'CartController@checkout');
+		// Route::post('/carts', 'CartController@store_order');
+		// Route::get('carts/manage' , 'CartController@manage');
+		// Route::get('carts/manage/{id}/cancel' , 'CartController@cancel');
+		// Route::get('carts/manage/{id}/detail' , 'CartController@detail');
+		// Route::get('carts/{rowId}/down-count', 'CartController@down_count');
+		// Route::get('carts/{rowId}/up-count', 'CartController@up_count');
+		// Route::get('carts/manage/export', 'CartController@export_order');
+		// Route::get('carts/manage/{id}/detail/export', 'CartController@export_order_detail');

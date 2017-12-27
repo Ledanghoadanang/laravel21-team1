@@ -25,6 +25,14 @@
 </head><!--/head-->
 
 <body>
+  <div class="btn btn-default"  style="position: fixed; top: 40px; right: 5px; background-color: #FE980F">
+	@if ( Cart::count() > 0 )
+		<a id="cart" href="{{ url('carts')}}"><i class="fa fa-shopping-cart"></i><span id="count"> ({{ Cart::count() }})</span></a>
+	@else
+		<a id="cart" href="{{ url('carts')}}" ><i class="fa fa-shopping-cart"></i><span id="count"></span></a>
+	@endif
+	</div>
+  
 	<header id="header"><!--header-->
 		<div class="header_top"><!--header_top-->
 			<div class="container">
@@ -488,5 +496,56 @@
 	  <script src="{{asset('js/jquery.scrollUp.min.js')}}"></script>
     <script src="{{asset('js/jquery.prettyPhoto.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
+
+    <script type="text/javascript">
+    function ud_find_text(self) {
+	    var children = self.parentNode.getElementsByTagName('input');
+	    for (var i = 0; i < children.length; i++) {
+	        if (children[i].getAttribute('type') == 'text') {
+	            return children[i];
+	        }
+	    }
+	}
+    function ud_inc(self) {
+    	var text = ud_find_text(self);
+    	text.value++;
+	}
+	function ud_dec(self) {
+	    var text = ud_find_text(self);
+	    if (text.value > 0) text.value--;
+	}
+	function addCart(id)
+        {
+            var root = '{{url('/carts')}}';
+            $.get(root + '/' + id + '/' + 'add', function(data, status){
+                console.log(data);
+            //   $('#count').replaceWith('<span id="count">' + data.count +'</span> ');
+              $('#count').replaceWith('<span id="count">' + data.count +'</span> ');
+            });
+        }
+	 function down(rowId)
+	 {
+	 	var root = '{{ url('/carts') }}';
+	 	$.get( root + '/' + rowId + '/down-count', function(data, status){
+	 		var sub = data.subtotal.toLocaleString();
+	 		console.log(data);
+	 		$('#'+ rowId).replaceWith('<input type="text" id="'+rowId+'" name="quantity" value="' + data.qty +'" size="2" style="text-align: center;">');
+	 		$('#sub' + rowId).replaceWith('<span id="sub'+rowId+'">'+sub+' VNĐ </span>');
+	 	});
+	 }
+	function up(rowId)
+	{
+		var root = '{{ url('/carts') }}';
+	 	$.get( root + '/' + rowId + '/up-count', function(data, status){
+	 		var sub = data.subtotal.toLocaleString();
+	 		console.log(data);
+	 		$('#'+ rowId).replaceWith('<input type="text" id="'+rowId+'" name="quantity" value="' + data.qty +'" size="2" style="text-align: center;">');
+	 		$('#sub' + rowId).replaceWith('<span id="sub'+rowId+'">'+sub+' VNĐ </span>');
+	 	});
+	}
+	$( ".delete" ).click(function() {
+	  alert( "xóa thành công." );
+	});
+    </script>
 </body>
 </html>

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Cart;
 use Auth;
 use App\Product;
+use App\Order;
+use App\OrderDetail;
 
 class ShoppingCartController extends Controller
 {
@@ -23,6 +25,7 @@ class ShoppingCartController extends Controller
         $count = Cart::count();
         return response(['count' => $count], 200);
     }
+
     public function delete($rowId)
     {
     	Cart::remove($rowId);

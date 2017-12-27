@@ -13,17 +13,14 @@ use Illuminate\Support\Facades\Input;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/admin', function () {
-  if(Auth::check('email')){
-    return view('admin.index');
-  }
-  else {
-    return view('admin.login');
-  }
+if(Auth::check('email')){
+return view('admin.index');
+}
+else {
+return view('admin.login');
+}
 })->middleware('checkadmin');
-
-
 Route::get('/admin/styles','StyleController@index');
 Route::post('admin/styles', 'StyleController@postStyle');
 Route::get('admin/styles/create', 'StyleController@createStyle');
@@ -43,17 +40,15 @@ Route::get('admin/branchs/create', 'BranchController@createBranch');
 Route::get('admin/branchs/{branch}/edit', 'BranchController@editBranch');
 Route::put('admin/branchs/{branch}', 'BranchController@putBranch');
 Route::get('admin/branchs/{branch}/delete', 'BranchController@deleteBranch');
-
 Route::put('admin/styles/{style}', function(Style $style){
-  $inputs = Input::all();
-  $style->update($inputs);
-  // return redirect('/admin/styles/' . $style->id)->withSuccess('Styles has been update');
-  return redirect('/admin/styles');
+$inputs = Input::all();
+$style->update($inputs);
+// return redirect('/admin/styles/' . $style->id)->withSuccess('Styles has been update');
+return redirect('/admin/styles');
 });
-
 Route::get('admin/styles/{style}/delete', function(Style $style){
-  $style->delete();
-  return redirect('admin/styles')->withSuccess('Styles has delete');
+$style->delete();
+return redirect('admin/styles')->withSuccess('Styles has delete');
 });
 Route::get('/', 'ProductController@home') ;
 Route::get('/products', 'ProductController@index');
@@ -65,20 +60,12 @@ Route::post('products', 'ProductController@saveProduct');
 Route::get('products/{product}/edit', 'ProductController@edit');
 Route::put('products/{product}', 'ProductController@put');
 Route::get('products/{product}/delete', 'ProductController@delete');
-
 Route::get('/search', 'ProductController@searchProduct');
-
 Route::post('/searchPrice', 'ProductController@searchProductByPrices');
 Route::get('products/{branch}', 'ProductController@searchProductDetails');
 Route::get('products/{branch}', 'ProductController@searchProductDetails');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-
-
-
-
-
-
 ///carts
 Route::get('/carts', 'ShoppingCartController@carts');
 Route::get('/checkout', 'ShoppingCartController@checkout');
@@ -88,13 +75,12 @@ Route::get('carts/{rowId}/up-count', 'ShoppingCartController@up_count');
 Route::get('carts/delete/{rowId}', 'ShoppingCartController@delete');
 /////////
 ///carts
-		// Route::get('/carts', 'CartController@index');
-		// Route::get('carts/delete/{rowId}', 'CartController@delete');
-		// Route::get('carts/checkout', 'CartController@checkout');
-		// Route::post('/carts', 'CartController@store_order');
-		// Route::get('carts/manage' , 'CartController@manage');
-		// Route::get('carts/manage/{id}/cancel' , 'CartController@cancel');
-		// Route::get('carts/manage/{id}/detail' , 'CartController@detail');
-
-		// Route::get('carts/manage/export', 'CartController@export_order');
-		// Route::get('carts/manage/{id}/detail/export', 'CartController@export_order_detail');
+// Route::get('/carts', 'CartController@index');
+// Route::get('carts/delete/{rowId}', 'CartController@delete');
+// Route::get('carts/checkout', 'CartController@checkout');
+// Route::post('/carts', 'CartController@store_order');
+// Route::get('carts/manage' , 'CartController@manage');
+// Route::get('carts/manage/{id}/cancel' , 'CartController@cancel');
+// Route::get('carts/manage/{id}/detail' , 'CartController@detail');
+// Route::get('carts/manage/export', 'CartController@export_order');
+// Route::get('carts/manage/{id}/detail/export', 'CartController@export_order_detail');

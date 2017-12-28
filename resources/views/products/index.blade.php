@@ -3,7 +3,7 @@
 <h2 class="title text-center">DANH MỤC SẢN PHẨM</h2>
 <form action="/search" method="GET" role="search" class="title text-center searchform">
 	{{ csrf_field() }}
-	<input type="text"  name="product"  placeholder="Search products">
+	<input type="text"  name="product"  placeholder="Search products"  value="{{ isset($_GET['product']) ? $_GET['product'] : ''}}">
 	<button type="submit" class="btn btn-default">
 	<span class="glyphicon glyphicon-search"> Search </span>
 	</button>

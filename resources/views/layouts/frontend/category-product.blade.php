@@ -10,7 +10,7 @@
     <div id="sportswear" class="panel-collapse collapse">
       <div class="panel-body">
         <ul>
-          <li><a href="#">Rolex - Thụy Sĩ </a></li>
+          <li><a href="{{url('/branchs/searchRolexStyle')}}">Rolex - Thụy Sĩ </a></li>
           <li><a href="#">Cartier - Pháp </a></li>
           <li><a href="#">Omega - Thụy Sĩ </a></li>
           <li><a href="#">Patek Philippe - Thụy Sĩ</a></li>
@@ -50,36 +50,36 @@
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4 class="panel-title"><a href="#">Rolex - Thụy Sĩ</a></h4>
+      <h4 class="panel-title"><a href="{{url('/branchs/searchRolex')}}">Rolex - Thụy Sĩ</a></h4>
     </div>
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4 class="panel-title"><a href="#">Cartier - Pháp</a></h4>
+      <h4 class="panel-title"><a href="{{url('/branchs/searchCartier')}}">Cartier - Pháp</a></h4>
     </div>
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4 class="panel-title"><a href="#">Omega - Thụy Sĩ</a></h4>
+      <h4 class="panel-title"><a href="{{url('/branchs/searchOmega')}}">Omega - Thụy Sĩ</a></h4>
     </div>
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4 class="panel-title"><a href="#">Patek Philippe - Thụy Sĩ</a></h4>
+      <h4 class="panel-title"><a href="{{url('/branchs/searchPatekPhilippe')}}">Patek Philippe - Thụy Sĩ</a></h4>
     </div>
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4 class="panel-title"><a href="#">Montblanc - Đức</a></h4>
+      <h4 class="panel-title"><a href="{{url('/branchs/searchMontblanc')}}">Montblanc - Đức</a></h4>
     </div>
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4 class="panel-title"><a href="#">TAG Heuer - Thụy Sĩ</a></h4>
+      <h4 class="panel-title"><a href="{{url('/branchs/searchTagHeuer')}}">TAG Heuer - Thụy Sĩ</a></h4>
     </div>
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4 class="panel-title"><a href="#">Longines - Thụy Sĩ</a></h4>
+      <h4 class="panel-title"><a href="{{url('/branchs/searchLongines')}}">Longines - Thụy Sĩ</a></h4>
     </div>
   </div>

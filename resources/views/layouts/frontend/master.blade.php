@@ -25,6 +25,13 @@
 </head><!--/head-->
 
 <body>
+  <div class="btn btn-default"  style="position: fixed; top: 40px; right: 5px; background-color: #FE980F">
+	@if ( Cart::count() > 0 )
+		<a id="cart" href="{{ url('carts')}}"><i class="fa fa-shopping-cart"></i><span id="count"> ({{ Cart::count() }})</span></a>
+	@else
+		<a id="cart" href="{{ url('carts')}}" ><i class="fa fa-shopping-cart"></i><span id="count"></span></a>
+	@endif
+</div>
 	<header id="header"><!--header-->
 		@include('layouts.frontend.header')
 	</header><!--/header-->
@@ -93,5 +100,19 @@
 	<script src="{{ asset('js/price-range.js') }}"></script>
   <script src="{{ asset('js/jquery.prettyPhoto.js') }}"></script>
   <script src="{{ asset('js/main.js') }}"></script>
+  <script type="text/javascript">
+		function addCart(id)
+        {
+            var root = '{{url('/carts')}}';
+            $.get(root + '/' + id + '/' + 'add', function(data, status){
+                console.log(data);
+            //   $('#count').replaceWith('<span id="count">' + data.count +'</span> ');
+              $('#count').replaceWith('<span id="count">(' + data.count +')</span> ');
+            });
+        }
+        $( ".add_product" ).click(function() {
+		  alert( "Đã thêm sản phẩm vào giỏ hàng!" );
+		});
+	</script>
 </body>
 </html>

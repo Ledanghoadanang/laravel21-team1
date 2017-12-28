@@ -22,8 +22,8 @@ class CreateOrdersTable extends Migration
             $table->string('name');
             $table->integer('phone');
             $table->string('adress');
-            $table->integer('id_user')->unsigned()->nullable();
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

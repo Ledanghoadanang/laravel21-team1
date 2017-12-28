@@ -20,8 +20,8 @@ class CreateProductsTable extends Migration
             $table->float('price');
             $table->text('image');
             $table->longText('description');
-            $table->integer('id_branch')->unsigned()->nullable();
-            $table->foreign('id_branch')->references('id')->on('branchs');
+            $table->integer('branch_id')->unsigned()->nullable();
+            $table->foreign('branch_id')->references('id')->on('branchs');
             $table->timestamps();
         });
     }

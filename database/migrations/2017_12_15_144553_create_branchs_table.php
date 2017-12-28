@@ -16,8 +16,8 @@ class CreateBranchsTable extends Migration
         Schema::create('branchs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('id_style')->unsigned()->nullable();
-            $table->foreign('id_style')->references('id')->on('styles');
+            $table->integer('style_id')->unsigned()->nullable();
+            $table->foreign('style_id')->references('id')->on('styles');
             $table->timestamps();
         });
     }

@@ -12,14 +12,14 @@ class BranchsSeeder extends Seeder
     public function run()
     {
       DB::table('branchs')->insert([
-        ['name' => 'ROLEX', 'id_style'  =>  1],
-        ['name' => 'CASIO', 'id_style'  =>  1],
-        ['name' => 'CITIZENT', 'id_style'  =>  1 ],
-        ['name' => 'SENKO', 'id_style'  =>  1 ],
-        ['name' => 'SUNRISE', 'id_style'  =>  2],
-        ['name' => 'CASIO', 'id_style'  =>  2],
-        ['name' => 'ORIENT', 'id_style'  =>  2 ],
-        ['name' => 'SENKO', 'id_style'  =>  2 ],
+        ['name' => 'ROLEX', 'style_id'  =>  1],
+        ['name' => 'CASIO', 'style_id'  =>  1],
+        ['name' => 'CITIZENT', 'style_id'  =>  1 ],
+        ['name' => 'SENKO', 'style_id'  =>  1 ],
+        ['name' => 'SUNRISE', 'style_id'  =>  2],
+        ['name' => 'CASIO', 'style_id'  =>  2],
+        ['name' => 'ORIENT', 'style_id'  =>  2 ],
+        ['name' => 'SENKO', 'style_id'  =>  2 ],
       ]);
     }
 }

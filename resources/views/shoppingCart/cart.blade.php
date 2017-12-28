@@ -179,7 +179,10 @@
                            </div>
                         </td>
                         <td class="cart_total">
-                           <p class="cart_total_price">{{ number_format($row->subtotal, 0, '.','.') . ' VNĐ' }}</p>
+                           <p class="cart_total_price">
+                             <td><span id="subtotal">{{ $row->subtotal }}</span></td>
+
+                           </p>
                         </td>
                         <td class="cart_delete">
                            <a class="cart_quantity_delete delete" href="{{ url('carts/delete/' . $row->rowId) }}"><i class="fa fa-times"></i></a>
@@ -193,6 +196,7 @@
                               <tr>
                                  <td>Cart Sub Total</td>
                                  <td>{{ Cart::subtotal() }}</td>
+
                               </tr>
                               <tr>
                                  <td>Exo Tax</td>
@@ -204,7 +208,7 @@
                               </tr>
                               <tr>
                                  <td>Total</td>
-                                 <td><span>{{ Cart::total() . ' VNĐ' }}</span></td>
+                                 <td><span id="total">{{ Cart::total() . ' VNĐ' }}</span></td>
                               </tr>
                            </table>
                         </td>
@@ -456,14 +460,17 @@
               }
           }
          }
+
          function ud_inc(self) {
          	var text = ud_find_text(self);
          	text.value++;
          }
+
          function ud_dec(self) {
           var text = ud_find_text(self);
           if (text.value > 0) text.value--;
          }
+
          function addCart(id)
              {
                  var root = '{{url('/carts')}}';
@@ -473,6 +480,7 @@
                    $('#count').replaceWith('<span id="count">' + data.count +'</span> ');
                  });
              }
+
          function down(rowId)
          {
          var root = '{{ url('/carts') }}';
@@ -482,8 +490,13 @@
          $('#'+ rowId).replaceWith('<input type="text" id="'+rowId+'" name="quantity" value="' + data.qty +'" size="2" style="text-align: center;">');
          $('#sub' + rowId).replaceWith('<span id="sub'+rowId+'">'+sub+' VNĐ </span>');
          $('#count').replaceWith('<span id="count">' + data.count +'</span> ');
+
+         $('#subtotal').replaceWith('<span id="subtotal">' + data.count +'</span> ');
+
+
          });
          }
+
          function up(rowId)
          {
          var root = '{{ url('/carts') }}';
@@ -493,6 +506,7 @@
          $('#'+ rowId).replaceWith('<input type="text" id="'+rowId+'" name="quantity" value="' + data.qty +'" size="2" style="text-align: center;">');
          $('#sub' + rowId).replaceWith('<span id="sub'+rowId+'">'+sub+' VNĐ </span>');
          $('#count').replaceWith('<span id="count">' + data.count +'</span> ');
+          $('#subtotal').replaceWith('<span id="subtotal">' + data.subtotal +'</span> ');
          });
          }
          $( ".delete" ).click(function() {

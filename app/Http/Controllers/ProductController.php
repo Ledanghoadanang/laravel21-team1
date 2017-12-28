@@ -198,7 +198,7 @@ public function searchRolexStyle(){
 
   $products = DB::table('products')
             ->join('branchs', 'branchs.id', '=', 'products.id_branch')
-            ->join('styles', 'branchs.id_style', '=', 'styles.name')
+            ->join('styles', 'branchs.id_style', '=', 'styles.id')
             ->where('products.name','=','Rolex')
             ->get();
   return view('products.index',compact('products'));

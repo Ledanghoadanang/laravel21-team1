@@ -99,3 +99,7 @@ Route::get('/branchs/searchRolexStyle', 'ProductController@searchRolexStyle');
 // Route::get('/branchs/searchMontblancStyle', 'ProductController@searchMontblancStyle');
 // Route::get('/branchs/searchTagHeuerStyle', 'ProductController@searchTagHeuerStyle');
 // Route::get('/branchs/searchLonginesStyle', 'ProductController@searchLonginesStyle');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

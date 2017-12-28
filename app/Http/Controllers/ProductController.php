@@ -106,11 +106,6 @@ public function create()
    return view('products.create')->with('branchs', $branchs);
   }
 
-public function show(Product $product)
-  {
-  return view('products.show', compact('product'));
-  }
-
 public function searchProduct()
   {
     $product = Input::get ( 'product' );

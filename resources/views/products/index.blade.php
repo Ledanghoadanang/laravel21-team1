@@ -3,7 +3,7 @@
 <h2 class="title text-center">DANH MỤC SẢN PHẨM</h2>
 <form action="/search" method="GET" role="search" class="title text-center searchform">
 	{{ csrf_field() }}
-	<input type="text"  name="product"  placeholder="Search products">
+	<input type="text"  name="product"  placeholder="Search products"  value="{{ isset($_GET['product']) ? $_GET['product'] : ''}}">
 	<button type="submit" class="btn btn-default">
 	<span class="glyphicon glyphicon-search"> Search </span>
 	</button>
@@ -16,7 +16,7 @@
 			<div class="productinfo text-center">
 				<img src="{{asset('images/products')}}/{{$product->image}}" alt="" />
 				<h2>{{ $product->price }}</h2>
-				<p>{{ $product->name }} @if($product->branch) - {{ $product->branch->name }} @endif</p>
+				<p>{{ $product->name }} </p>
 				<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
 			</div>
 			<div class="product-overlay">

@@ -73,7 +73,7 @@ Route::get('carts/{id}/add', 'ShoppingCartController@add');
 Route::get('carts/{rowId}/down-count', 'ShoppingCartController@down_count');
 Route::get('carts/{rowId}/up-count', 'ShoppingCartController@up_count');
 Route::get('carts/delete/{rowId}', 'ShoppingCartController@delete');
-/////////
+
 ///carts
 // Route::post('/carts', 'CartController@store_order');
 // Route::get('carts/manage' , 'CartController@manage');
@@ -90,3 +90,12 @@ Route::get('/branchs/searchPatekPhilippe', 'ProductController@searchPatekPhilipp
 Route::get('/branchs/searchMontblanc', 'ProductController@searchMontblanc');
 Route::get('/branchs/searchTagHeuer', 'ProductController@searchTagHeuer');
 Route::get('/branchs/searchLongines', 'ProductController@searchLongines');
+
+//Search products by branch and male style
+Route::get('/branchs/searchRolexStyle', 'ProductController@searchRolexStyle');
+// Route::get('/branchs/searchCartierStyle', 'ProductController@searchCartierStyle');
+// Route::get('/branchs/searchOmegaStyle', 'ProductController@searchOmegaStyle');
+// Route::get('/branchs/searchPatekPhilippeStyle', 'ProductController@searchPatekPhilippeStyle');
+// Route::get('/branchs/searchMontblancStyle', 'ProductController@searchMontblancStyle');
+// Route::get('/branchs/searchTagHeuerStyle', 'ProductController@searchTagHeuerStyle');
+// Route::get('/branchs/searchLonginesStyle', 'ProductController@searchLonginesStyle');

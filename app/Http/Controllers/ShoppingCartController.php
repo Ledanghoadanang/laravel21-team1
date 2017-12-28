@@ -81,6 +81,7 @@ public function down_count($rowId)
         $item = Cart::get($rowId);
         Cart::update($rowId, $item->qty - 1);
         $count = Cart::count();
+        $subtotal = Cart::subtotal();
         return response(['qty' => $item->qty, 'subtotal' => $item->subtotal, 'count' => $count], 200);
         // Cart::update($rowId, )
       }

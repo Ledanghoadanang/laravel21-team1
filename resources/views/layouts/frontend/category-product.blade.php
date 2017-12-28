@@ -10,7 +10,7 @@
     <div id="sportswear" class="panel-collapse collapse">
       <div class="panel-body">
         <ul>
-          <li><a href="#">Rolex - Thụy Sĩ </a></li>
+          <li><a href="{{url('/branchs/searchRolexStyle')}}">Rolex - Thụy Sĩ </a></li>
           <li><a href="#">Cartier - Pháp </a></li>
           <li><a href="#">Omega - Thụy Sĩ </a></li>
           <li><a href="#">Patek Philippe - Thụy Sĩ</a></li>

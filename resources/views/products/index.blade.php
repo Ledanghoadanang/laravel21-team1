@@ -16,7 +16,7 @@
 			<div class="productinfo text-center">
 				<img src="{{asset('images/products')}}/{{$product->image}}" alt="" />
 				<h2>{{ $product->price }}</h2>
-				<p>{{ $product->name }} @if($product->branch) - {{ $product->branch->name }} @endif</p>
+				<p>{{ $product->name }} </p>
 				<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
 			</div>
 			<div class="product-overlay">

@@ -81,3 +81,12 @@ Route::get('carts/delete/{rowId}', 'ShoppingCartController@delete');
 // Route::get('carts/manage/{id}/detail' , 'CartController@detail');
 // Route::get('carts/manage/export', 'CartController@export_order');
 // Route::get('carts/manage/{id}/detail/export', 'CartController@export_order_detail');
+
+//Search products by branch
+Route::get('/branchs/searchRolex', 'ProductController@searchRolex');
+Route::get('/branchs/searchCartier', 'ProductController@searchCartier');
+Route::get('/branchs/searchOmega', 'ProductController@searchOmega');
+Route::get('/branchs/searchPatekPhilippe', 'ProductController@searchPatekPhilippe');
+Route::get('/branchs/searchMontblanc', 'ProductController@searchMontblanc');
+Route::get('/branchs/searchTagHeuer', 'ProductController@searchTagHeuer');
+Route::get('/branchs/searchLongines', 'ProductController@searchLongines');

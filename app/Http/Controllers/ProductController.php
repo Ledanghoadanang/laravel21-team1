@@ -150,4 +150,47 @@ public function saveProduct(Request $request)
         }
           return redirect('/products');
   }
+
+  //Search products by branch
+  public function searchRolex(){
+    $products = Product::where('name','LIKE','%'.'Rolex'.'%')
+                        ->get();
+    return view('products.index',compact('products'));
+  }
+
+  public function searchCartier(){
+    $products = Product::where('name','LIKE','%'.'Cartier'.'%')
+                        ->get();
+    return view('products.index',compact('products'));
+  }
+
+  public function searchOmega(){
+    $products = Product::where('name','LIKE','%'.'Omega'.'%')
+                        ->get();
+    return view('products.index',compact('products'));
+  }
+
+  public function searchPatekPhilippe(){
+    $products = Product::where('name','LIKE','%'.'Patek Philippe'.'%')
+                        ->get();
+    return view('products.index',compact('products'));
+  }
+
+  public function searchMontblanc(){
+    $products = Product::where('name','LIKE','%'.'Montblanc'.'%')
+                        ->get();
+    return view('products.index',compact('products'));
+  }
+
+  public function searchTagHeuer(){
+    $products = Product::where('name','LIKE','%'.'Tag Heuer'.'%')
+                        ->get();
+    return view('products.index',compact('products'));
+  }
+
+  public function searchLongines(){
+    $products = Product::where('name','LIKE','%'.'Longines'.'%')
+                        ->get();
+    return view('products.index',compact('products'));
+  }
 }

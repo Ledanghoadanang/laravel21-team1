@@ -33,7 +33,122 @@
 	@endif
 </div>
 	<header id="header"><!--header-->
-    @include('layouts.frontend.header')
+    <div class="header_top"><!--header_top-->
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="contactinfo">
+              <ul class="nav nav-pills">
+                <li><a href="#"><i class="fa fa-phone"></i> 0934 861 123</a></li>
+                <li><a href="#"><i class="fa fa-envelope"></i> ledanghoadanang@gmail.com</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="social-icons pull-right">
+              <ul class="nav navbar-nav">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!--/header_top-->
+
+    <div class="header-middle"><!--header-middle-->
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="logo pull-left">
+              <a href="{{ url('products')}}"><img src="images/home/logo.png" alt="" /></a>
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <div class="shop-menu pull-right">
+              <ul class="nav navbar-nav">
+                <li><a href="#"><i class="fa fa-star"></i> Best Sales</a></li>
+
+                <li><a href="{{ url('/checkout')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                <li><a href="{{ url('/carts')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                @if (Auth::guest())
+                    <li><a href="{{ route('register') }}">Register</a></li>
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                @else
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!--/header-middle-->
+
+    <div class="header-bottom"><!--header-bottom-->
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-9">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+            <div class="mainmenu pull-left">
+              <ul class="nav navbar-nav collapse navbar-collapse">
+                <li><a href="{{url('products')}}" >Home</a></li>
+                <li class="dropdown"><a href="#" class="active">Shop<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="{{url('products')}}">Products</a></li>
+                    <li><a href="product-details.html">Product Details</a></li>
+                    <li><a href="{{url('checkout')}}">Checkout</a></li>
+                    <li><a href="{{url('carts')}}">Cart</a></li>
+                    <li><a href="{{url('login')}}">Login</a></li>
+                                    </ul>
+                                </li>
+                <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="blog.html">Blog List</a></li>
+                    <li><a href="blog-single.html">Blog Single</a></li>
+                                    </ul>
+                                </li>
+                <li><a href="404.html">404</a></li>
+                <li><a href="contact-us.html">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <!--<div class="col-sm-3">
+            <div class="search_box pull-right">
+              <input type="text" placeholder="Search"/>
+            </div>
+          </div>-->
+        </div>
+      </div>
+    </div><!--/header-bottom-->
 	</header><!--/header-->
 
 	<section>
@@ -104,20 +219,20 @@
 							<div class="product-information"><!--/product-information-->
 								<img src="{{asset('images/product-details/new.jpg')}}" class="newarrival" alt="" />
 								<h2>{{$product->name}}</h2>
-								<p>{{$product->branch->name}}</p>
+
 								<img src="{{asset('images/product-details/rating.png')}}" alt="" />
 								<span>
 									<span>{{$product->price}}</span>
-									<label>Quantity:</label>
+									<label>Số lượng:</label>
 									<input type="text" value="{{$product->quantity}}" />
 									<button type="button" class="btn btn-fefault cart" onclick="addCart({{$product->id}})">
 										<i class="fa fa-shopping-cart"></i>
-										Add to cart
+										Thêm giỏ hàng
 									</button>
 								</span>
-								<p><b>Availability:</b> In Stock</p>
-								<p><b>Condition:</b> New</p>
-								<p><b>Brand:</b> E-SHOPPER</p>
+								<p><b>Tình trạng:</b> Còn hàng</p>
+								<p><b>Sản phẩm:</b> Mới</p>
+								<p><b>Thương hiệu của:</b> {{$product->branch->name}}</p>
 								<a href=""><img src="{{asset('images/product-details/share.png')}}" class="share img-responsive"  alt="" /></a>
 							</div><!--/product-information-->
 						</div>
@@ -126,10 +241,10 @@
 					<div class="category-tab shop-details-tab"><!--category-tab-->
 						<div class="col-sm-12">
 							<ul class="nav nav-tabs">
-								<li><a href="#details" data-toggle="tab">Details</a></li>
-								<li><a href="#companyprofile" data-toggle="tab">Company Profile</a></li>
+								<li><a href="#details" data-toggle="tab">Chi tiết sản phẩm</a></li>
+								<li><a href="#companyprofile" data-toggle="tab">Thông tin thương hiệu</a></li>
 								<li><a href="#tag" data-toggle="tab">Tag</a></li>
-								<li class="active"><a href="#reviews" data-toggle="tab">Reviews (5)</a></li>
+								<li class="active"><a href="#reviews" data-toggle="tab">Review</a></li>
 							</ul>
 						</div>
 						<div class="tab-content">
@@ -289,12 +404,12 @@
 							<div class="tab-pane fade active in" id="reviews" >
 								<div class="col-sm-12">
 									<ul>
-										<li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
+										<li><a href=""><i class="fa fa-user"></i>Admin</a></li>
 										<li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
-										<li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
+										<li><a href=""><i class="fa fa-calendar-o"></i>20 DEC 2017</a></li>
 									</ul>
 									<p>{{$product->description}}</p>
-									<p><b>Write Your Review</b></p>
+									<p><b>Ý kiến của khách hàng</b></p>
 
 									<form action="#">
 										<span>

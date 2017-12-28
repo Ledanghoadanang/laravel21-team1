@@ -67,32 +67,10 @@
                <div class="row">
                   <div class="col-sm-4">
                      <div class="logo pull-left">
-                        <a href="index.html"><img src="{{asset('images/home/logo.png')}}" alt="" /></a>
+                        <a href="{{ url('/')}}"><img src="{{asset('images/home/logo.png')}}" alt="" /></a>
                      </div>
-                     <div class="btn-group pull-right">
-                        <div class="btn-group">
-                           <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                           USA
-                           <span class="caret"></span>
-                           </button>
-                           <ul class="dropdown-menu">
-                              <li><a href="">Canada</a></li>
-                              <li><a href="">UK</a></li>
-                           </ul>
-                        </div>
-                        <div class="btn-group">
-                           <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                           DOLLAR
-                           <span class="caret"></span>
-                           </button>
-                           <ul class="dropdown-menu">
-                              <li><a href="">Canadian Dollar</a></li>
-                              <li><a href="">Pound</a></li>
-                           </ul>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-sm-8">
+                    </div>
+                    <div class="col-sm-8">
                      <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
                            <li><a href=""><i class="fa fa-user"></i> Account</a></li>
@@ -122,15 +100,15 @@
                      </div>
                      <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                           <li><a href="index.html">Home</a></li>
+                           <li><a href="{{url('/')}}">Home</a></li>
                            <li class="dropdown">
                               <a href="#">Shop<i class="fa fa-angle-down"></i></a>
                               <ul role="menu" class="sub-menu">
-                                 <li><a href="shop.html">Products</a></li>
-                                 <li><a href="product-details.html">Product Details</a></li>
-                                 <li><a href="checkout.html">Checkout</a></li>
-                                 <li><a href="cart.html" class="active">Cart</a></li>
-                                 <li><a href="login.html">Login</a></li>
+                                 <li><a href="{{url('/')}}">Products</a></li>
+                                 <li><a href="">Product Details</a></li>
+                                 <li><a href="">Checkout</a></li>
+                                 <li><a href="" class="active">Cart</a></li>
+                                 <li><a href="">Login</a></li>
                               </ul>
                            </li>
                            <li class="dropdown">
@@ -193,7 +171,8 @@
                            <div class="cart_quantity_button">
                               <?php $rowId = (string)$row->rowId?>
                               <form>
-                                 <input type="button" value=" - " onclick="down('{{ $row->rowId }}')" >
+
+                                 <input type="button" value=" - " onclick="down('{{ $row->rowId }}')">
                                  <input type="text" id="{{$row->rowId}}" name="quantity" value="{{ $row->qty }}" size="2" style="text-align: center;" >
                                  <input type="button" value=" + " onclick="up('{{ $row->rowId }}')" >
                               </form>
@@ -502,6 +481,7 @@
          console.log(data);
          $('#'+ rowId).replaceWith('<input type="text" id="'+rowId+'" name="quantity" value="' + data.qty +'" size="2" style="text-align: center;">');
          $('#sub' + rowId).replaceWith('<span id="sub'+rowId+'">'+sub+' VNĐ </span>');
+         $('#count').replaceWith('<span id="count">' + data.count +'</span> ');
          });
          }
          function up(rowId)
@@ -512,6 +492,7 @@
          console.log(data);
          $('#'+ rowId).replaceWith('<input type="text" id="'+rowId+'" name="quantity" value="' + data.qty +'" size="2" style="text-align: center;">');
          $('#sub' + rowId).replaceWith('<span id="sub'+rowId+'">'+sub+' VNĐ </span>');
+         $('#count').replaceWith('<span id="count">' + data.count +'</span> ');
          });
          }
          $( ".delete" ).click(function() {

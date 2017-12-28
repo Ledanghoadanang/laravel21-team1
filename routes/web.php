@@ -75,9 +75,6 @@ Route::get('carts/{rowId}/up-count', 'ShoppingCartController@up_count');
 Route::get('carts/delete/{rowId}', 'ShoppingCartController@delete');
 /////////
 ///carts
-// Route::get('/carts', 'CartController@index');
-// Route::get('carts/delete/{rowId}', 'CartController@delete');
-// Route::get('carts/checkout', 'CartController@checkout');
 // Route::post('/carts', 'CartController@store_order');
 // Route::get('carts/manage' , 'CartController@manage');
 // Route::get('carts/manage/{id}/cancel' , 'CartController@cancel');

@@ -80,7 +80,8 @@ public function down_count($rowId)
         return response(['count' => $count], 200);*/
         $item = Cart::get($rowId);
         Cart::update($rowId, $item->qty - 1);
-        return response(['qty' => $item->qty, 'subtotal' => $item->subtotal], 200);
+        $count = Cart::count();
+        return response(['qty' => $item->qty, 'subtotal' => $item->subtotal, 'count' => $count], 200);
         // Cart::update($rowId, )
       }
 
@@ -88,6 +89,7 @@ public function up_count($rowId)
       {
         $item = Cart::get($rowId);
         Cart::update($rowId, $item->qty + 1);
-        return response(['qty' => $item->qty, 'subtotal' => $item->subtotal], 200);
+        $count = Cart::count();
+        return response(['qty' => $item->qty, 'subtotal' => $item->subtotal, 'count' => $count], 200);
       }
 }

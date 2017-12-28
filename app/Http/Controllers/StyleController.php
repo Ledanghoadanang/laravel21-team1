@@ -36,4 +36,6 @@ class StyleController extends Controller
       $style->delete();
       return redirect('admin/styles')->withSuccess('Styles has delete');
     }
+    //Search Products From styles table in Database - Start
+    
 }

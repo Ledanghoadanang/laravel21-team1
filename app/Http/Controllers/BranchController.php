@@ -35,4 +35,5 @@ class BranchController extends Controller
       $branch->delete();
       return redirect('admin/branchs')->withSuccess('Branchs has delete');
     }
+    //Search branch From Database - Start
 }

@@ -22,7 +22,7 @@
             <tr>
               <th>STT</th>
               <th>Name</th>
-              <th>id_style</th>
+              <th>Style</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>
@@ -31,7 +31,7 @@
             <tr>
               <td> <h4>{{ $i }}</h4></td>
               <td> <h4>{{ $branch->name }}</h4></td>
-              <td> <h4>{{ $branch->id_style }}</h4></td>
+              <td> <h4>{{ $branch->style_id }}</h4></td>
               <td><a href="{{url('admin/branchs/' . $branch->id . '/edit')}}">Edit </a></td>
               <td><a href="{{url('admin/branchs/' . $branch->id . '/delete')}}">Delete</a></td>
             </tr>

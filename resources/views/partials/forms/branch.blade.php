@@ -10,9 +10,9 @@
   @endif
 </div>
 <div class="form-group">
-  {!! Form::label('id_style', 'Style') !!}
+  {!! Form::label('style_id', 'Style') !!}
   <div class="form-controls">
-    {!! Form::select('id_style', $styles, null, ['class' => 'form-control']) !!}
+    {!! Form::select('style_id', $styles, null, ['class' => 'form-control']) !!}
   </div>
 </div>
 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}

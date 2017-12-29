@@ -58,9 +58,9 @@
   @endif
 </div>
 <div class="form-group">
-  {!! Form::label('id_branch', 'Branch') !!}
+  {!! Form::label('branch_id', 'Branch') !!}
   <div class="form-controls">
-    {!! Form::select('id_branch', $branchs, null, ['class' => 'form-control']) !!}
+    {!! Form::select('branch_id', $branchs, null, ['class' => 'form-control']) !!}
   </div>
 </div>
 

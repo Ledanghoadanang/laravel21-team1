@@ -27,7 +27,7 @@
               <th>Price</th>
               <th>Image</th>
               <th>Description</th>
-              <th>id_branch</th>
+              <th>Branch_id</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>
@@ -40,7 +40,7 @@
                 <td> <h4>{{ $product->price }}</h4></td>
                 <td> <h4><img src="/images/products/{{$product->image}}" width="50px" height="50px"></h4></td>
                 <td> <h4>{{ $product->description }}</h4></td>
-                <td> <h4>{{ $product->id_branch }}</h4></td>
+                <td> <h4>{{ $product->branch_id }}</h4></td>
                 <td><a href="{{url('admin/products/' . $product->id . '/edit')}}">Edit </a></td>
                 <td><a href="{{url('admin/products/' . $product->id . '/delete')}}">Delete</a></td>
               </tr>

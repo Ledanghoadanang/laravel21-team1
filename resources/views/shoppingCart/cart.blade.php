@@ -193,6 +193,7 @@
                         <td colspan="4">&nbsp;</td>
                         <td colspan="2">
                            <table class="table table-condensed total-result">
+                             <div class="total_area">
                               <tr>
                                  <td>Cart Sub Total</td>
                                  <td>{{ Cart::subtotal() }}</td>
@@ -209,7 +210,11 @@
                               <tr>
                                  <td>Total</td>
                                  <td><span id="total">{{ Cart::total() . ' VNĐ' }}</span></td>
+                              </div>
                               </tr>
+                           </table>
+                           <table>
+                             <a class="btn btn-default check_out" href="{{ url('/checkout')}}">Check Out</a>
                            </table>
                         </td>
                      </tr>

@@ -56,7 +56,7 @@ public function manage()
         // dd(auth::user()->id);
         $orders = Order::where('user_id', '=', auth::user()->id)->get();
         // dd($orders);
-        return view('layouts.cart.manage')->with('orders', $orders);
+        return view('shoppingCart.manage')->with('orders', $orders);
       }
 
 public function cancel($id)
@@ -69,7 +69,7 @@ public function cancel($id)
 public function detail($id)
       {
         $items = OrderDetail::where('order_id', '=', $id)->get();
-        return view('layouts.cart.manage-detail')->with('items', $items);
+        return view('shoppingCart.manage-detail')->with('items', $items);
       }
 
 public function down_count($rowId)

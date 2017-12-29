@@ -34,6 +34,11 @@
   @endif
 </div>
 
+@if(isset($product))
+<div>
+  <img id="output" src="/images/products/@if(isset($product)){{$product->image}} @endif " width="50" height="50" alt="image"/>{{$product->image}}
+</div>
+@endif
 <div class="form-group">
   {!! Form::label('image', 'Image') !!}
   <div class="form-controls">

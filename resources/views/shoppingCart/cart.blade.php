@@ -77,7 +77,31 @@
                            <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
                            <li><a href="{{url('checkout')}}" ><i class="fa fa-crosshairs"></i> Checkout</a></li>
                            <li><a href="{{url('carts')}}" class="active"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                           <li><a href="{{url('login')}}"><i class="fa fa-lock"></i> Login</a></li>
+                           @if (Auth::check())
+                           <li>
+                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user"></i>
+                             {{ Auth::user()->name }} <span class="caret"></span>
+                             </a>
+                             <ul class="dropdown-menu" style="min-width: 110px;">
+                               <li><a href="{{ url('/user')}}">Xem Profile</li>
+                               </a>
+                               <li><a href="{{ url('/change-password')}}">Đổi mật khẩu</a></li>
+                               <li>
+                                 <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();">
+                                 Logout
+                                 </a>
+                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                   {{ csrf_field() }}
+                                 </form>
+                               </li>
+                             </ul>
+                           </li>
+                           @else
+                           <li><a href="{{ url('login') }}"><i class="fa fa-user" aria-hidden="true"></i> Đăng Nhập</a></li>
+                           <li><a href="{{ url('register') }}"><i class="fa fa-lock"></i> Đăng Ký</a></li>
+                           @endif
                         </ul>
                      </div>
                   </div>
@@ -98,36 +122,6 @@
                         <span class="icon-bar"></span>
                         </button>
                      </div>
-                     <div class="mainmenu pull-left">
-                        <ul class="nav navbar-nav collapse navbar-collapse">
-                           <li><a href="{{url('/')}}">Home</a></li>
-                           <li class="dropdown">
-                              <a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                              <ul role="menu" class="sub-menu">
-                                 <li><a href="{{url('/')}}">Products</a></li>
-                                 <li><a href="">Product Details</a></li>
-                                 <li><a href="">Checkout</a></li>
-                                 <li><a href="" class="active">Cart</a></li>
-                                 <li><a href="">Login</a></li>
-                              </ul>
-                           </li>
-                           <li class="dropdown">
-                              <a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                              <ul role="menu" class="sub-menu">
-                                 <li><a href="blog.html">Blog List</a></li>
-                                 <li><a href="blog-single.html">Blog Single</a></li>
-                              </ul>
-                           </li>
-                           <li><a href="404.html">404</a></li>
-                           <li><a href="contact-us.html">Contact</a></li>
-                        </ul>
-                     </div>
-                  </div>
-                  <div class="col-sm-3">
-                     <div class="search_box pull-right">
-                        <input type="text" placeholder="Search"/>
-                     </div>
-                  </div>
                </div>
             </div>
          </div>

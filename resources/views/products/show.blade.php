@@ -232,7 +232,9 @@
 								</span>
 								<p><b>Tình trạng:</b> Còn hàng</p>
 								<p><b>Sản phẩm:</b> Mới</p>
+                @if($product->branch->name)
 								<p><b>Thương hiệu của:</b> {{$product->branch->name}}</p>
+                @endif
 								<a href=""><img src="{{asset('images/product-details/share.png')}}" class="share img-responsive"  alt="" /></a>
 							</div><!--/product-information-->
 						</div>

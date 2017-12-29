@@ -112,7 +112,7 @@ Route::get('carts/{id}/add', 'ShoppingCartController@add');
 Route::get('carts/{rowId}/down-count', 'ShoppingCartController@down_count');
 Route::get('carts/{rowId}/up-count', 'ShoppingCartController@up_count');
 Route::get('carts/delete/{rowId}', 'ShoppingCartController@delete');
-// Route::post('/carts', 'CartController@store_order');
+Route::post('/carts', 'ShoppingCartController@store_order');
 Route::get('carts/manage' , 'ShoppingCartController@manage');
 // Route::get('carts/manage/{id}/cancel' , 'CartController@cancel');
 Route::get('carts/manage/{id}/detail' , 'ShoppingCartController@detail');

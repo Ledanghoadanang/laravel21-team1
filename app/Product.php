@@ -11,11 +11,11 @@ use App\OrderDetail;
 class Product extends Model
 {
   protected $table='products';
-  protected $fillable = ['name','quantity','price','image','description','id_branch'];
+  protected $fillable = ['name','quantity','price','image','description','branch_id'];
   protected $dates = ['deleted_at'];
 
   public function branch(){
-    return $this->belongsTo('App\Branch', 'id_branch', 'id');
+    return $this->belongsTo('App\Branch');
   }
 
   public function order_details(){

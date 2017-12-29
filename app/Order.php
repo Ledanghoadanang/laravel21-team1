@@ -8,7 +8,7 @@ class Order extends Model
 {
   protected $table='orders';
   protected $fillable = ['name','date_order','note','status','amount','name','phone',
-  'adress','id_user'];
+  'adress','user_id'];
   protected $dates = ['deleted_at'];
 
   public function order_details(){

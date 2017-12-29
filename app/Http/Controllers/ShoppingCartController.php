@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use DateTime;
 use Cart;
 use Auth;
 use App\Product;
@@ -41,11 +42,20 @@ public function checkout()
 public function store_order(Request $request)
       {
         $name = $request->Input('name_receiver');
+        $amount = Cart::count();
         $datetime = new DateTime('now');
-        $order = Order::create(['date' => $datetime, 'address_order' => $request->Input('address_order'), 'phone' => $request->Input('phone'), 'name_receiver' => $request->Input('name_receiver'), 'user_id' => Auth::user()->id ]);
+        $order = Order::create(['date_order' => $datetime,
+                               'note' => $request->Input('note'),
+                               'status' => $request->Input('status'),
+                               'amount' => $amount,
+                               'name' => $request->Input('name_receiver'),
+                               'phone' => $request->Input('phone'),
+                               'adress' => $request->Input('address_order'),
+                               'user_id' => Auth::user()->id
+                             ]);
         $content = Cart::content();
         foreach ($content as $item) {
-        OrderDetail::create(['product_id' => $item->id, 'quantity' => $item->qty, 'price' => $item->price, 'order_id' => $order->id]);
+        OrderDetail::create(['product_id' => $item->id, 'quantity' => $item->qty, 'total_price' => $item->subtotal, 'order_id' => $order->id]);
       }
         Cart::destroy();
         return redirect('/');
@@ -59,6 +69,13 @@ public function manage()
         return view('shoppingCart.manage')->with('orders', $orders);
       }
 
+
+public function detail($id)
+      {
+        $items = OrderDetail::where('order_id', '=', $id)->get();
+        return view('shoppingCart.manage-details')->with('items', $items);
+      }
+
 public function cancel($id)
       {
         $order = Order::find($id);
@@ -66,11 +83,6 @@ public function cancel($id)
         return redirect('carts/manage');
       }
 
-public function detail($id)
-      {
-        $items = OrderDetail::where('order_id', '=', $id)->get();
-        return view('shoppingCart.manage-detail')->with('items', $items);
-      }
 
 public function down_count($rowId)
       {

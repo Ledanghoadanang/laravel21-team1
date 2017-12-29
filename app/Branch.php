@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Branch extends Model
 {
     protected $table='branchs';
-    protected $fillable = ['name', 'id_style'];
+    protected $fillable = ['name', 'style_id'];
     protected $dates = ['deleted_at'];
 
     public function styles(){

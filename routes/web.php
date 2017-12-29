@@ -107,7 +107,7 @@ Route::get('/branchs/searchRolexStyle', 'ProductController@searchRolexStyle');
 
 ///carts
 Route::get('/carts', 'ShoppingCartController@carts');
-Route::get('/checkout', 'ShoppingCartController@checkout');
+Route::get('/checkout', 'ShoppingCartController@checkout')->middleware('checklogin');;
 Route::get('carts/{id}/add', 'ShoppingCartController@add');
 Route::get('carts/{rowId}/down-count', 'ShoppingCartController@down_count');
 Route::get('carts/{rowId}/up-count', 'ShoppingCartController@up_count');

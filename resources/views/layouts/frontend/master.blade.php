@@ -29,7 +29,7 @@
 	@if ( Cart::count() > 0 )
 		<a id="cart" href="{{ url('carts')}}"><i class="fa fa-shopping-cart"></i><span id="count"> ({{ Cart::count() }})</span></a>
 	@else
-		<a id="cart" href="{{ url('carts')}}" ><i class="fa fa-shopping-cart"></i><span id="count"></span></a>
+		<a id="cart" href="{{ url('/')}}" ><i class="fa fa-shopping-cart"></i><span id="count"></span></a>
 	@endif
 </div>
 	<header id="header"><!--header-->

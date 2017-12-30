@@ -4,10 +4,10 @@
 <ul class="sidebar-menu" data-widget="tree">
   <li class="header">QUẢN LÝ ADMIN ROUTES </li>
   <li><a href="{{ url ('/admin/styles') }}"><i class="fa fa-book"></i> <span>Styles</span></a></li>
-  <li><a href="{{ url ('/admin/products') }}" class="adminactive"><i class="fa fa-book"></i> <span>Products</span></a></li>
+  <li><a href="{{ url ('/admin/products') }}"><i class="fa fa-book"></i> <span>Products</span></a></li>
   <li><a href="{{ url ('/admin/branchs') }}"><i class="fa fa-book"></i> <span>Branchs</span></a></li>
   <li><a href="{{ url ('/admin/carts/manage') }}"><i class="fa fa-book"></i> <span>Orders</span></a></li>
-  <li><a href="{{ url ('/admin/products') }}"><i class="fa fa-book"></i> <span>Customers</span></a></li>
+  <li><a href="{{ url ('/admin/products') }}" class="adminactive"><i class="fa fa-book"></i> <span>Customers</span></a></li>
 </ul>
 @stop
 @section('content')
@@ -15,7 +15,7 @@
     <div class="col-md-12">
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Display all products</h3>
+          <h3 class="box-title">Display all user: admin, employee, customers</h3>
           <button type="button" class="btn btn-success" class="button" ><a href="{{ url ('/admin/products/create') }}" style="color:white;"> Add a products </a></button>
           <div class="box-tools">
             <div class="input-group input-group-sm" style="width: 150px; ">
@@ -33,39 +33,35 @@
             <tr>
               <th>STT</th>
               <th>Name</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th>Image</th>
-              <th>Description</th>
-              <th>Branch_id</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Address</th>
+              <th>Gender</th>
+              <th>Role</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>
             <?php $i=1;?>
-            @foreach($products as $product)
+            @foreach($users as $user)
               <tr>
                 <td> <h4>{{ $i}}</h4></td>
-                <td> <h4>{{ $product->name }}</h4></td>
-                <td> <h4>{{ $product->quantity }}</h4></td>
-                <td> <h4>{{ $product->price }}</h4></td>
-                <td> <h4><img src="/images/products/{{$product->image}}" width="50px" height="50px"></h4></td>
-                <td> <h4>{{ $product->description }}</h4></td>
-                <td> <h4>{{ $product->branch_id }}</h4></td>
-                <td><a href="{{url('admin/products/' . $product->id . '/edit')}}">Edit </a></td>
-                <td><a href="{{url('admin/products/' . $product->id . '/delete')}}">Delete</a></td>
+                <td> <h4>{{ $user->name }}</h4></td>
+                <td> <h4>{{ $user->Email }}</h4></td>
+                <td> <h4>0{{ $user->phone }}</h4></td>
+                <td> <h4>{{ $user->address }}</h4></td>
+                <td> <h4>{{ $user->gender }}</h4></td>
+                <td> <h4>{{ $user->role }}</h4></td>
+                <td><a href="{{url('admin/customers/' . $user->id . '/edit')}}">Edit </a></td>
+                <td><a href="{{url('admin/customers/' . $user->id . '/delete')}}">Delete</a></td>
               </tr>
             <?php $i=$i+1 ?>
             @endforeach
           </table>
 
         </div>
-            {!! $products->links(); !!}
         <!-- /.box-body -->
-
       </div>
       <!-- /.box -->
-
-
       <!-- /.box -->
     </div>
     <!-- /.col -->

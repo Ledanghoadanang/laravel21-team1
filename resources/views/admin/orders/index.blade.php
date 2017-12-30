@@ -6,6 +6,7 @@
   <li><a href="{{ url ('/admin/products') }}"><i class="fa fa-book"></i> <span>Products</span></a></li>
   <li><a href="{{ url ('/admin/branchs') }}"><i class="fa fa-book"></i> <span>Branchs</span></a></li>
   <li><a href="{{ url ('/admin/carts/manage') }}" class="adminactive"><i class="fa fa-book"></i> <span>Orders</span></a></li>
+  <li><a href="{{ url ('/admin/products') }}"><i class="fa fa-book"></i> <span>Customers</span></a></li>
 </ul>
 @stop
 @section('content')

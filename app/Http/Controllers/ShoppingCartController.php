@@ -93,7 +93,7 @@ public function detail($id)
 public function cancel($id)
       {
         $order = Order::find($id);
-        $order->update(['shipping_status' => 'cancel', 'status' => 'not avalible']);
+        $order->update(['shipping_status' => 'cancel', 'status' => 'Đã Hủy']);
         return redirect('carts/manage');
       }
 

@@ -1,4 +1,13 @@
 @extends('layouts.admin.master')
+@section('menu')
+<ul class="sidebar-menu" data-widget="tree">
+  <li class="header">QUẢN LÝ ADMIN ROUTES </li>
+  <li><a href="{{ url ('/admin/styles') }}"><i class="fa fa-book"></i> <span>Styles</span></a></li>
+  <li><a href="{{ url ('/admin/products') }}"><i class="fa fa-book"></i> <span>Products</span></a></li>
+  <li><a href="{{ url ('/admin/branchs') }}" class="adminactive"><i class="fa fa-book"></i> <span>Branchs</span></a></li>
+  <li><a href="{{ url ('/admin/carts/manage') }}"><i class="fa fa-book"></i> <span>Orders</span></a></li>
+</ul>
+@stop
 @section('content')
   <div class="row">
     <div class="col-md-12">

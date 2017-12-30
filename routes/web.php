@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Input;
 
 Route::get('/admin', function () {
 if(Auth::check('email')){
-return view('admin.index');
+return redirect('/admin/products');
 }
 else {
 return view('admin.login');
@@ -63,6 +63,11 @@ Route::get('admin/branchs/{branch}/edit', 'BranchController@editBranch');
 Route::put('admin/branchs/{branch}', 'BranchController@putBranch');
 Route::get('admin/branchs/{branch}/delete', 'BranchController@deleteBranch');
 
+//Admin Cart Routes
+Route::get('/admin/carts/manage', 'ShoppingCartController@adminManage');
+Route::get('/admin/carts/{id}/orderdetais', 'ShoppingCartController@adminOrderDetails');
+Route::get('admin/carts/{id}/cancel' , 'ShoppingCartController@cancel');
+
 
 // USER ROUTES ----------------------------//------------------//----------------//-------------//
 
@@ -106,15 +111,14 @@ Route::get('/branchs/searchRolexStyle', 'ProductController@searchRolexStyle');
 
 
 ///carts
-Route::get('/carts', 'ShoppingCartController@carts');
-Route::get('/checkout', 'ShoppingCartController@checkout')->middleware('checklogin');;
+Route::get('/carts', 'ShoppingCartController@carts')->middleware('checkcart');
+Route::get('/checkout', 'ShoppingCartController@checkout')->middleware('checklogin');
 Route::get('carts/{id}/add', 'ShoppingCartController@add');
 Route::get('carts/{rowId}/down-count', 'ShoppingCartController@down_count');
 Route::get('carts/{rowId}/up-count', 'ShoppingCartController@up_count');
 Route::get('carts/delete/{rowId}', 'ShoppingCartController@delete');
 Route::post('/carts', 'ShoppingCartController@store_order');
 Route::get('carts/manage' , 'ShoppingCartController@manage');
-// Route::get('carts/manage/{id}/cancel' , 'CartController@cancel');
 Route::get('carts/manage/{id}/detail' , 'ShoppingCartController@detail');
 // Route::get('carts/manage/export', 'CartController@export_order');
 // Route::get('carts/manage/{id}/detail/export', 'CartController@export_order_detail');

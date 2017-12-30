@@ -79,7 +79,6 @@
                     @else
                     <li><a id="cart" href="{{ url('carts')}}" ><i class="fa fa-shopping-cart"></i><span id="count"> Giỏ Hàng</span></a></li>
                     @endif -->
-                  @if (Auth::check())
                   <li>
                     <a href="{{ url('carts/manage')}}"><i class="fa fa-check-square-o" aria-hidden="true"></i> Quản lý đơn hàng</a>
                   </li>
@@ -103,10 +102,6 @@
                       </li>
                     </ul>
                   </li>
-                  @else
-                  <li><a href="{{ url('login') }}"><i class="fa fa-user" aria-hidden="true"></i> Đăng Nhập</a></li>
-                  <li><a href="{{ url('register') }}"><i class="fa fa-lock"></i> Đăng Ký</a></li>
-                  @endif
                 </ul>
               </div>
             </div>
@@ -125,18 +120,11 @@
               <p>Thông tin đặt hàng: </p>
               <form class="form-horizontal" action="{{ url('carts')}}" method="POST">
                 {{ csrf_field() }}
-                @if (Auth::check())
                 <input type="text" id="name_receiver" name="name_receiver" placeholder="Tên người nhận hàng" value="{{ Auth::user()->name }}">
                 <input type="text" id="note" name="note" placeholder="Ghi chú">
                 <input type="text" id="status" name="status" placeholder="Tình trạng">
                 <input type="address" id="address_order" name="address_order" placeholder="địa chỉ" value="{{ Auth::user()->address }}">
-                @else
-                <input type="text" id="name_receiver" name="name_receiver" placeholder="Tên người nhận hàng">
-                <input type="text" id="note" name="note" placeholder="Ghi chú">
-                <input type="text" id="status" name="status" placeholder="Tình trạng">
-                <input type="address" id="address_order" name="address_order" placeholder="địa chỉ">
-                @endif
-                <input type="tel" id="phone" name="phone" placeholder="số điện thoại">
+                <input type="tel" id="phone" name="phone" placeholder="0{{ Auth::user()->phone }}">
                 <button type="button" class="btn btn-primary"> <a href="{{ url('carts') }}" style="color: #fff">Hủy</a> </button>
                 <button type="submit" class="btn btn-primary"> Đặt hàng </button>
               </form>

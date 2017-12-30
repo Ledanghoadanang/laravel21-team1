@@ -16,6 +16,20 @@ class ShoppingCartController extends Controller
 // 	}
 // 	return view('auth.login');
 // }
+public function adminManage()
+      {
+        // dd(auth::user()->id);
+        $orders = Order::all();
+        // dd($orders);
+        return view('admin.orders.index')->with('orders', $orders);
+      }
+
+public function adminOrderDetails($id)
+      {
+        $items = OrderDetail::where('order_id', '=', $id)->get();
+        return view('admin.orders.order-details')->with('items', $items);
+      }
+
 public function add($id)
       {
         $product = Product::find($id);

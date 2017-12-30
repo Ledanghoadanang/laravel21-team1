@@ -53,7 +53,7 @@ Route::get('admin/products/create', 'ProductController@createProduct');
 Route::get('admin/products/{product}/edit', 'ProductController@editProduct');
 Route::put('admin/products/{product}', 'ProductController@putProduct');
 Route::get('admin/products/{product}/delete', 'ProductController@deleteProduct');
-
+Route::get('admin/products/search', 'ProductController@searchAdminProduct');
 
 //Admin Branch Routes
 Route::get('/admin/branchs', 'BranchController@indexBranch');
@@ -62,6 +62,8 @@ Route::get('admin/branchs/create', 'BranchController@createBranch');
 Route::get('admin/branchs/{branch}/edit', 'BranchController@editBranch');
 Route::put('admin/branchs/{branch}', 'BranchController@putBranch');
 Route::get('admin/branchs/{branch}/delete', 'BranchController@deleteBranch');
+Route::get('admin/branchs/search', 'BranchController@searchBranch');
+
 
 //Admin Cart Routes
 Route::get('/admin/carts/manage', 'ShoppingCartController@adminManage');
@@ -122,3 +124,7 @@ Route::get('carts/manage' , 'ShoppingCartController@manage');
 Route::get('carts/manage/{id}/detail' , 'ShoppingCartController@detail');
 // Route::get('carts/manage/export', 'CartController@export_order');
 // Route::get('carts/manage/{id}/detail/export', 'CartController@export_order_detail');
+
+
+//User-Customers Routes
+Route::get('/admin/customers' , 'CustomerController@index');

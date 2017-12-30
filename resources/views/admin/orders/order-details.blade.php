@@ -17,15 +17,7 @@
         <div class="box-header with-border">
           <h3 class="box-title">Hiển thị tất cả các Order</h3>
           <button type="button" class="btn btn-success" class="button" ><a href="{{ url ('/admin/carts/manage') }}" style="color:white;"> Hiển thị</a></button>
-          <div class="box-tools">
-            <div class="input-group input-group-sm" style="width: 150px; ">
-              <input type="text" name="table_search" class="form-control pull-right" placeholder="Search"  style="margin-top:.1em;";>
-
-              <div class="input-group-btn" >
-                <button type="submit" class="btn btn-default"  style="margin-top:.1em;"><i class="fa fa-search"></i></button>
-              </div>
-            </div>
-          </div>
+          
         </div>
         <!-- /.box-header -->
         <div class="box-body">

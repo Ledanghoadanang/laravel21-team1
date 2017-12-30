@@ -7,7 +7,7 @@
   <li><a href="{{ url ('/admin/products') }}"><i class="fa fa-book"></i> <span>Products</span></a></li>
   <li><a href="{{ url ('/admin/branchs') }}"><i class="fa fa-book"></i> <span>Branchs</span></a></li>
   <li><a href="{{ url ('/admin/carts/manage') }}"><i class="fa fa-book"></i> <span>Orders</span></a></li>
-  <li><a href="{{ url ('/admin/products') }}" class="adminactive"><i class="fa fa-book"></i> <span>Customers</span></a></li>
+  <li><a href="{{ url ('/admin/customers') }}" class="adminactive"><i class="fa fa-book"></i> <span>Customers</span></a></li>
 </ul>
 @stop
 @section('content')
@@ -16,7 +16,7 @@
       <div class="box">
         <div class="box-header with-border">
           <h3 class="box-title">Display all user: admin, employee, customers</h3>
-          <button type="button" class="btn btn-success" class="button" ><a href="{{ url ('/admin/products/create') }}" style="color:white;"> Add a products </a></button>
+          <button type="button" class="btn btn-success" class="button" ><a href="{{ url ('/admin/users/create') }}" style="color:white;"> Add a users </a></button>
           <div class="box-tools">
             <div class="input-group input-group-sm" style="width: 150px; ">
               <input type="text" name="table_search" class="form-control pull-right" placeholder="Search"  style="margin-top:.1em;";>
@@ -46,11 +46,15 @@
               <tr>
                 <td> <h4>{{ $i}}</h4></td>
                 <td> <h4>{{ $user->name }}</h4></td>
-                <td> <h4>{{ $user->Email }}</h4></td>
+                <td> <h4>{{ $user->email }}</h4></td>
                 <td> <h4>0{{ $user->phone }}</h4></td>
                 <td> <h4>{{ $user->address }}</h4></td>
                 <td> <h4>{{ $user->gender }}</h4></td>
-                <td> <h4>{{ $user->role }}</h4></td>
+                @if(($user->role)==1)
+                <td> <h4>Admin</h4></td>
+                @else
+                <td> <h4>Customer</h4></td>
+                @endif
                 <td><a href="{{url('admin/customers/' . $user->id . '/edit')}}">Edit </a></td>
                 <td><a href="{{url('admin/customers/' . $user->id . '/delete')}}">Delete</a></td>
               </tr>

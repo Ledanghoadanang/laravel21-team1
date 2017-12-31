@@ -10,22 +10,24 @@
 </ul>
 @stop
 @section('content')
-
   <div class="row">
     <div class="col-md-12">
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Hiển thị tất cả Đơn hàng đã order</h3>
-          <button type="button" class="btn btn-success" class="button" ><a href="{{ url ('/admin/carts/manage') }}" style="color:white;"> Hiển thị tất cả </a></button>
-          <div class="box-tools">
-            <div class="input-group input-group-sm" style="width: 150px; ">
-              <input type="text" name="table_search" class="form-control pull-right" placeholder="Search"  style="margin-top:.1em;";>
-
-              <div class="input-group-btn" >
-                <button type="submit" class="btn btn-default"  style="margin-top:.1em;"><i class="fa fa-search"></i></button>
-              </div>
+          <div class="input-group">
+          <!-- //form seach -->
+          <form class="navbar-form navbar-left" action="/admin/search_order" role="search" method="GET" >
+            {!!Form::label('From', null, ['class' => 'form-control'])!!}
+            {!! Form::date('date_start', null, ['class' => 'form-control']) !!}
+            {!!Form::label('to', null, ['class' => 'form-control'])!!}
+            {!! Form::date('date_end', null, ['class' => 'form-control']) !!}
+            {!!Form::label('Details', null, ['class' => 'form-control'])!!}
+            <div class="form-group">
+              <input type="text" class="form-control" name="search_order"  value="{{ isset($_GET['search_order']) ? $_GET['search_order'] : '' }}">
+              &nbsp;&nbsp;&nbsp;
+              <button type="submit"  class="btn btn-info">sreach</button>
             </div>
-          </div>
+          </form>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -67,18 +69,11 @@
           </table>
         </div>
         <!-- /.box-body -->
-
       </div>
       <!-- /.box -->
-
-
       <!-- /.box -->
     </div>
     <!-- /.col -->
-
     <!-- /.col -->
   </div>
-
-
-
  @stop

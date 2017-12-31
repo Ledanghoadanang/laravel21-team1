@@ -17,7 +17,7 @@
         <div class="box-header with-border">
           <h3 class="box-title">Hiển thị tất cả các Order</h3>
           <button type="button" class="btn btn-success" class="button" ><a href="{{ url ('/admin/carts/manage') }}" style="color:white;"> Hiển thị</a></button>
-          
+
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -26,6 +26,7 @@
               <tr>
                 <th>ID</th>
                 <th>Số lượng</th>
+                <th>Ngày Đặt Hàng</th>
                 <th>Đơn Giá</th>
                 <th>Thành Tiền</th>
                 <th>Mã Đơn Hàng</th>
@@ -38,6 +39,7 @@
               <tr>
                 <td>{{ $item ->id}}</td>
                 <td>{{ $item ->quantity}}</td>
+                <td>{{ $order ->date}}</td>
                 <td>{{ number_format($item ->total_price/$item ->quantity, '2', ',', '.') . ' VNĐ'}}</td>
                 <td>{{ number_format($item ->total_price, '2', ',', '.') . ' VNĐ'}}</td>
                 <td>{{ $item ->order_id}}</td>
@@ -52,6 +54,8 @@
               @endforeach
             </tbody>
           </table>
+          <!-- <button type="button" id ="click-total" class="btn btn-success" class="button" style="color:white;"> Hiển thị thị tổng tiền</a></button> -->
+        <p style="float: right;"><b>Tổng Tiền: {{ number_format($total, '2', ',', '.') . ' VNĐ' }}</b></p>
         </div>
         <!-- /.box-body -->
 

@@ -25,10 +25,10 @@ public function adminManage()
       }
 
 public function adminOrderDetails($id)
-      {
-        $items = OrderDetail::where('order_id', '=', $id)->get();
-        return view('admin.orders.order-details')->with('items', $items);
-      }
+    {
+      $items = OrderDetail::where('order_id', '=', $id)->get();
+      return view('admin.orders.order-details')->with('items', $items);
+    }
 
 public function add($id)
       {
@@ -58,10 +58,11 @@ public function store_order(Request $request)
         $name = $request->Input('name_receiver');
         $amount = Cart::count();
         $datetime = new DateTime('now');
+        $status= 'Chờ thanh toán';
         $order = Order::create(['date_order' => $datetime,
                                'note' => $request->Input('note'),
-                               'status' => $request->Input('status'),
                                'amount' => $amount,
+                               'status' => $status,
                                'name' => $request->Input('name_receiver'),
                                'phone' => $request->Input('phone'),
                                'adress' => $request->Input('address_order'),
@@ -82,7 +83,6 @@ public function manage()
         // dd($orders);
         return view('shoppingCart.manage')->with('orders', $orders);
       }
-
 
 public function detail($id)
       {

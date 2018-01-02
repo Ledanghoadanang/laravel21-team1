@@ -16,12 +16,12 @@
         <div class="box-header with-border">
           <div class="input-group">
           <!-- //form seach -->
-          <form class="navbar-form navbar-left" action="/admin/search_order" role="search" method="GET" >
-            {!!Form::label('From', null, ['class' => 'form-control'])!!}
+          <form class="navbar-form navbar-left" action="/admin/orders/search" role="search" method="GET" >
+            {!!Form::label('Đặt từ ngày', null, ['class' => 'form-control'])!!}
             {!! Form::date('date_start', null, ['class' => 'form-control']) !!}
-            {!!Form::label('to', null, ['class' => 'form-control'])!!}
+            {!!Form::label('Đến ngày', null, ['class' => 'form-control'])!!}
             {!! Form::date('date_end', null, ['class' => 'form-control']) !!}
-            {!!Form::label('Details', null, ['class' => 'form-control'])!!}
+            {!!Form::label('Tình trạng Giao Hàng', null, ['class' => 'form-control'])!!}
             <div class="form-group">
               <input type="text" class="form-control" name="search_order"  value="{{ isset($_GET['search_order']) ? $_GET['search_order'] : '' }}">
               &nbsp;&nbsp;&nbsp;
@@ -36,7 +36,6 @@
               <tr>
                 <th>ID</th>
                 <th>Ngày Đặt Hàng</th>
-                <th>Trạng Thái</th>
                 <th>Địa Chỉ Giao Hàng</th>
                 <th>Tình Trạng Giao Hàng</th>
                 <th>Số Điện Thoại</th>
@@ -50,12 +49,11 @@
               @foreach ($orders as $order)
               <tr>
                 <td>{{ $order ->id}}</td>
-                <td>{{ $order ->date}}</td>
+                <td>{{ $order ->date_order}}</td>
+                <td>{{ $order ->adress}}</td>
                 <td>{{ $order ->status}}</td>
-                <td>{{ $order ->address_order}}</td>
-                <td>{{ $order ->shipping_status}}</td>
                 <td>{{ $order ->phone}}</td>
-                <td>{{ $order ->name_receiver}}</td>
+                <td>{{ $order ->name}}</td>
                 <td>{{ App\User::find($order->user_id)->name}}</td>
                 <td style="text-align: center;">
                   <a href="{{ url('admin/carts/' . $order->id . '/cancel')}}">
@@ -76,4 +74,5 @@
     <!-- /.col -->
     <!-- /.col -->
   </div>
+</div>
  @stop

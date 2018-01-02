@@ -124,10 +124,34 @@
 <script src="dist/js/demo.js"></script>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-<script>
+<script src="{{ asset('js/jquery.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/jquery.scrollUp.min.js') }}"></script>
+<script src="{{ asset('js/price-range.js') }}"></script>
+<script src="{{ asset('js/jquery.prettyPhoto.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
+<script type="text/javascript">
 $(function() {
   $( "#datepicker" ).datepicker();
 });
+
+
+  function ud_find_text(self) {
+   var children = self.parentNode.getElementsByTagName('input');
+   for (var i = 0; i < children.length; i++) {
+       if (children[i].getAttribute('type') == 'text') {
+           return children[i];
+       }
+   }
+  }
+  function ud_inc(self) {
+    var text = ud_find_text(self);
+    text.value++;
+  }
+  function ud_dec(self) {
+   var text = ud_find_text(self);
+   if (text.value > 0) text.value--;
+  }
 </script>
 </body>
 </html>

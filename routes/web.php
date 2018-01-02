@@ -54,6 +54,7 @@ Route::get('admin/products/{product}/edit', 'ProductController@editProduct');
 Route::put('admin/products/{product}', 'ProductController@putProduct');
 Route::get('admin/products/{product}/delete', 'ProductController@deleteProduct');
 Route::get('admin/products/search', 'ProductController@searchAdminProduct');
+Route::get('admin/orders/search', 'OrderController@searchAdminOrder');
 
 //Admin Branch Routes
 Route::get('/admin/branchs', 'BranchController@indexBranch');

@@ -39,10 +39,10 @@
               <tr>
                 <td>{{ $item ->id}}</td>
                 <td>{{ $item ->quantity}}</td>
-                <td>{{ $order ->date}}</td>
+                <td>{{ $item ->order->date_order}}</td>
                 <td>{{ number_format($item ->total_price/$item ->quantity, '2', ',', '.') . ' VNĐ'}}</td>
                 <td>{{ number_format($item ->total_price, '2', ',', '.') . ' VNĐ'}}</td>
-                <td>{{ $item ->order_id}}</td>
+                <td>{{ $item ->order_id }}</td>
                 <?php $product = App\Product::find($item->product_id); ?>
                 @if (empty($product))
                 <td> Sản Phẩm đã xóa hoặc ngừng kinh doanh</td>

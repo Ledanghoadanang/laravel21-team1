@@ -131,7 +131,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title" style="float: left;">Danh Sách Đơn Hàng Gần Đây</h3>
-              <a href="{{ url('carts/manage/export')}}" class="btn btn-success" style="float: right;"> Export Excel</a>
+              <!-- <a href="{{ url('carts/manage/export')}}" class="btn btn-success" style="float: right;"> Export Excel</a> -->
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -140,7 +140,7 @@
                   <tr>
                     <th>ID</th>
                     <th>Ngày Đặt Hàng</th>
-                    <th>Trạng Thái</th>
+                    <th>Ghi chú</th>
                     <th>Địa Chỉ Giao Hàng</th>
                     <th>Tình Trạng Giao Hàng</th>
                     <th>Số Điện Thoại</th>
@@ -154,12 +154,12 @@
                   @foreach ($orders as $order)
                   <tr>
                     <td>{{ $order ->id}}</td>
-                    <td>{{ $order ->date}}</td>
+                    <td>{{ $order ->date_order}}</td>
+                    <td>{{ $order ->note}}</td>
+                    <td>{{ $order ->adress}}</td>
                     <td>{{ $order ->status}}</td>
-                    <td>{{ $order ->address_order}}</td>
-                    <td>{{ $order ->shipping_status}}</td>
                     <td>{{ $order ->phone}}</td>
-                    <td>{{ $order ->name_receiver}}</td>
+                    <td>{{ $order ->name}}</td>
                     <td>{{ App\User::find($order->user_id)->name}}</td>
                     @if( $order->status == 'avalible')
                     <td style="text-align: center;">

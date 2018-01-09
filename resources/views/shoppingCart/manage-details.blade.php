@@ -175,7 +175,7 @@
             <!-- /.box-body -->
           </div>
         </div>
-        <a href="{{ url('carts/manage/'. $item->order_id. '/detail/export')}}" class="btn btn-success" style="float: right;"> Export PDF</a>
+        <!-- <a href="{{ url('carts/manage/'. $item->order_id. '/detail/export')}}" class="btn btn-success" style="float: right;"> Export PDF</a> -->
       </div>
     </section>
     <footer id="footer">

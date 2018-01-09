@@ -19,16 +19,21 @@ public function home()
   {
     return redirect('/products');
   }
+
 public function index()
   {
     $products = Product::all();
     return view('products.index',compact('products'));
   }
 
-public function branchs()
+public function searchAdminProduct()
 {
-  $products = Branch::all();
-  return view('products.index',compact('products'));
+  $product = Input::get ( 'product-search' );
+  $productUpercase = Str::lower($product);
+  $products = Product::where('name','LIKE','%'.$product.'%')
+                      ->orWhere('name','LIKE','%'.$productUpercase.'%')
+                      ->get();
+  return view('admin.products.showProducts',compact('products'));
 }
 
 public function getProductsByBranch($name)

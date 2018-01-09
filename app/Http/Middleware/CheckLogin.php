@@ -4,7 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
-
+use Kamaln7\Toastr\ToastrServiceProvider;
+use Illuminate\Support\Facades\Input;
 class CheckLogin
 {
     /**
@@ -20,6 +21,7 @@ class CheckLogin
         return $next($request);
       }
 
+      
         return redirect('/home');
     }
 }

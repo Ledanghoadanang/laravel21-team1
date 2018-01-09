@@ -122,7 +122,7 @@
                 {{ csrf_field() }}
                 <input type="text" id="name_receiver" name="name_receiver" placeholder="Tên người nhận hàng" value="{{ Auth::user()->name }}">
                 <input type="text" id="note" name="note" placeholder="Ghi chú">
-                <input type="text" id="status" name="status" placeholder="Tình trạng">
+                
                 <input type="address" id="address_order" name="address_order" placeholder="địa chỉ" value="{{ Auth::user()->address }}">
                 <input type="tel" id="phone" name="phone" placeholder="0{{ Auth::user()->phone }}">
                 <button type="button" class="btn btn-primary"> <a href="{{ url('carts') }}" style="color: #fff">Hủy</a> </button>

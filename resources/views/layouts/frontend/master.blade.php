@@ -22,9 +22,12 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('images/ico/apple-touch-icon-114-precomposed.png') }}">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('images/ico/apple-touch-icon-72-precomposed.png') }}">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('images/ico/apple-touch-icon-57-precomposed.png') }}">
-</head><!--/head-->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 
+
+</head><!--/head-->
 <body>
+
   <div class="btn btn-default"  style="position: fixed; top: 40px; right: 5px; background-color: #FE980F">
 	@if ( Cart::count() > 0 )
 		<a id="cart" href="{{ url('carts')}}"><i class="fa fa-shopping-cart"></i><span id="count"> ({{ Cart::count() }})</span></a>
@@ -75,13 +78,6 @@
 					<div class="category-tab"><!--category-tab-->
 						@include('layouts.frontend.category-tab')
 					</div><!--/category-tab-->
-
-					<div class="recommended_items"><!--recommended_items-->
-						@include('layouts.frontend.recommend-item')
-            <h2 class="title text-center">
-            @yield('recomend')
-            </h2>
-					</div><!--/recommended_items-->
 
 				</div>
 			</div>

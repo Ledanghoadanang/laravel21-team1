@@ -61,19 +61,13 @@
             <?php $i=$i+1 ?>
             @endforeach
           </table>
-
         </div>
-            {!! $products->links(); !!}
         <!-- /.box-body -->
-
       </div>
       <!-- /.box -->
-
-
       <!-- /.box -->
     </div>
     <!-- /.col -->
-
     <!-- /.col -->
   </div>
 

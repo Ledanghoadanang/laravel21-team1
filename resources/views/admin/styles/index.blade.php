@@ -6,6 +6,7 @@
   <li><a href="{{ url ('/admin/products') }}"><i class="fa fa-book"></i> <span>Products</span></a></li>
   <li><a href="{{ url ('/admin/branchs') }}"><i class="fa fa-book"></i> <span>Branchs</span></a></li>
   <li><a href="{{ url ('/admin/carts/manage') }}"><i class="fa fa-book"></i> <span>Orders</span></a></li>
+  <li><a href="{{ url ('/admin/customers') }}"><i class="fa fa-book"></i> <span>Customers</span></a></li>
 </ul>
 @stop
 @section('content')
@@ -15,15 +16,6 @@
         <div class="box-header with-border">
           <h3 class="box-title">Display all styles</h3>
           <button type="button" class="btn btn-success" class="button" ><a href="{{ url ('/admin/styles/create') }}" style="color:white;"> Add a styles </a></button>
-          <div class="box-tools">
-            <div class="input-group input-group-sm" style="width: 150px; ">
-              <input type="text" name="table_search" class="form-control pull-right" placeholder="Search"  style="margin-top:.1em;";>
-
-              <div class="input-group-btn" >
-                <button type="submit" class="btn btn-default"  style="margin-top:.1em;"><i class="fa fa-search"></i></button>
-              </div>
-            </div>
-          </div>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
